@@ -1,5 +1,6 @@
 package org.Edu.navigator.repositories;
 
+import org.Edu.navigator.Dto.CoordinatorDto;
 import org.Edu.navigator.Dto.CustomCoordinatorResponseDto;
 import org.Edu.navigator.entities.Coordinator;
 import org.springframework.data.jpa.repository.JpaRepository;

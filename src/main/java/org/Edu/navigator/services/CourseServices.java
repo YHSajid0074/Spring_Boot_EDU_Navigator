@@ -1,32 +1,35 @@
 package org.Edu.navigator.services;
 
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.Edu.navigator.Dto.CourseDto;
 import org.Edu.navigator.entities.Course;
 import org.Edu.navigator.repositories.CourseRepositories;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@RequiredArgsConstructor
+
 @Service
 public class CourseServices {
     private final CourseRepositories courseRepositories;
-    public Course create(Course course){
-       return courseRepositories.save(course);
+    public CourseServices(CourseRepositories courseRepositories) {
+        this.courseRepositories = courseRepositories;
     }
-
-    public Course get(Long id){
-        Course course = courseRepositories.findById(id).get();
-        return course;
-    }
-
-    public List<Course> getAll(){
-      List< Course >course = courseRepositories.findAll();
+    public Course getCourseById(long id) {
+      Course course=  courseRepositories.findById(id).get();
       return course;
     }
 
-    public void delete(Long id){
-        courseRepositories.deleteById(id);
+    public List<Course> getAllCourses() {
+        return courseRepositories.findAll();
     }
+
+    public Course createCourse(CourseDto courseDto) {
+        Course course = new Course();
+        
+
+    }
+
 
 }

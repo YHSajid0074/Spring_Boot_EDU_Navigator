@@ -1,6 +1,7 @@
 package org.Edu.navigator.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.Edu.navigator.Dto.CoordinatorDto;
 import org.Edu.navigator.entities.Coordinator;
 import org.Edu.navigator.services.CoordinatorServices;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +15,7 @@ import java.util.List;
 public class CoordinatorController {
     public final CoordinatorServices coordinatorServices;
     @PostMapping
-   public ResponseEntity<String> create(@RequestBody Coordinator coordinator){
+   public ResponseEntity<String> create(@RequestBody CoordinatorDto coordinator){
        coordinatorServices.create(coordinator);
        return ResponseEntity.ok("Successfully Created");
    }
