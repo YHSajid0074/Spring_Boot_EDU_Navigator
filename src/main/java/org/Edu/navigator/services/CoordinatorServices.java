@@ -16,9 +16,11 @@ import java.util.List;
 public class CoordinatorServices {
 
     CoordinatorRepositories coordinatorRepositories;
+
     public CoordinatorServices (CoordinatorRepositories coordinatorRepositories) {
         this.coordinatorRepositories=coordinatorRepositories;
     }
+
     public Coordinator create(CoordinatorDto coordinatorDto) {
         Coordinator coordinator = new Coordinator();
         coordinator.setFullName(coordinatorDto.fullName());
@@ -38,6 +40,7 @@ public class CoordinatorServices {
         List<Coordinator> coordinators = coordinatorRepositories.findAll();
         return coordinators;
     }
+
     public Coordinator update(long id, CoordinatorDto coordinatorDto) {
         Coordinator coordinator=coordinatorRepositories.findById(id).get();
         coordinator.setEmail(coordinatorDto.email());
@@ -47,7 +50,8 @@ public class CoordinatorServices {
         coordinator.setTrainers(coordinatorDto.trainers());
         return coordinator;
     }
-public void delete(long id) {
-        coordinatorRepositories.deleteById(id);
+
+      public void delete(long id) {
+          coordinatorRepositories.deleteById(id);
 }
 }

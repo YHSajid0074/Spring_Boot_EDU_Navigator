@@ -12,10 +12,13 @@ import java.util.List;
 
 @Service
 public class CourseServices {
+
     private final CourseRepositories courseRepositories;
+
     public CourseServices(CourseRepositories courseRepositories) {
         this.courseRepositories = courseRepositories;
     }
+
     public Course getCourseById(long id) {
       Course course=  courseRepositories.findById(id).get();
       return course;
@@ -27,9 +30,22 @@ public class CourseServices {
 
     public Course createCourse(CourseDto courseDto) {
         Course course = new Course();
-        
-
+        course.setDuration(courseDto.duration());
+        course.setName(courseDto.name());
+        course.setTrainee(courseDto.trainee());
+        return courseRepositories.save(course);
     }
 
+    public Course updateCourse(long id,CourseDto courseDto) {
+     Course course=courseRepositories.findById(id).get();
+     course.setName(courseDto.name());
+     course.setTrainee(courseDto.trainee());
+     course.setDuration(courseDto.duration());
+     return courseRepositories.save(course);
+    }
+
+    public void deleteCourse(long id) {
+        courseRepositories.deleteById(id);
+    }
 
 }
