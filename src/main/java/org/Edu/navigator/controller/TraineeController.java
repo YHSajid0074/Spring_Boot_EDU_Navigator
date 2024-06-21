@@ -33,21 +33,21 @@ public class TraineeController {
         traineeServices.updateTrainee(id,traineeDto);
         return ResponseEntity.ok("Trainee updated");
     }
-    @DeleteMapping
+    @DeleteMapping("{id}")
     public ResponseEntity<String> deleteTrainee(@PathVariable long id){
         traineeServices.deleteTrainee(id);
         return ResponseEntity.ok("Trainee deleted");
     }
 
-    @GetMapping
+    @GetMapping("{id}")
     public ResponseEntity<Trainee> getTraineeById(@PathVariable long id){
       Trainee trainee=traineeServices.getTraineeById(id);
       return ResponseEntity.ok(trainee);
     }
-    @GetMapping
-    public ResponseEntity<List<Trainee>> getAllTrainee(){
-        return ResponseEntity.ok(traineeServices.getAllTrainees());
-    }
+ //   @GetMapping("{id}")
+   // public ResponseEntity<List<Trainee>> getAllTrainee(){
+    //    return ResponseEntity.ok(traineeServices.getAllTrainees());
+   // }
 
 
 
