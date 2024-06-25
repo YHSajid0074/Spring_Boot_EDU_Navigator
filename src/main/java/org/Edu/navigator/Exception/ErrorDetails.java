@@ -7,15 +7,14 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-public class ErrorDetails {
+
     @Getter
     @Setter
     @NoArgsConstructor
     @AllArgsConstructor
-    public class ErrorDeatils {
-        private LocalDateTime timestrap;
-        private String messege;
+    public class ErrorDetails {
+        private LocalDateTime timestamp;
+        private String message;
         private  String path;
         private  String errorCode;
-    }
 }

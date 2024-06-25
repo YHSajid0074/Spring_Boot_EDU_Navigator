@@ -38,7 +38,6 @@ public ResponseEntity<List<Course>> getAll(){
     return ResponseEntity.ok(courses);
 }
 
-
 @DeleteMapping("delete/{id}")
 public ResponseEntity<String> delete(@PathVariable long id){
     courseServices.deleteCourse(id);

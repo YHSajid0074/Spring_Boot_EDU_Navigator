@@ -8,11 +8,11 @@
         <version>3.2.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>org.noob</groupId>
-    <artifactId>LearnSpringDataJPA</artifactId>
+    <groupId>org.Edu.navigator</groupId>
+    <artifactId>LearnSpringDataJpaApplication</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>LearnSpringDataJPA</name>
-    <description>LearnSpringDataJPA</description>
+    <name>LearnSpringDataJpaApplication</name>
+    <description>LearnSpringDataJpaApplication</description>
     <properties>
         <java.version>17</java.version>
     </properties>

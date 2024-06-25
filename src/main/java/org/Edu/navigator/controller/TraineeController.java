@@ -44,10 +44,10 @@ public class TraineeController {
       Trainee trainee=traineeServices.getTraineeById(id);
       return ResponseEntity.ok(trainee);
     }
- //   @GetMapping("{id}")
-   // public ResponseEntity<List<Trainee>> getAllTrainee(){
-    //    return ResponseEntity.ok(traineeServices.getAllTrainees());
-   // }
+    @GetMapping
+    public ResponseEntity<List<Trainee>> getAllTrainee(){
+      return ResponseEntity.ok(traineeServices.getAllTrainees());
+    }
 
 
 
