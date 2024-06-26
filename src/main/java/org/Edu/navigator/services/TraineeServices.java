@@ -2,6 +2,7 @@ package org.Edu.navigator.services;
 
 import lombok.RequiredArgsConstructor;
 import org.Edu.navigator.Dto.TraineeDto;
+import org.Edu.navigator.Exception.DuplicateEmailException;
 import org.Edu.navigator.entities.Trainee;
 import org.Edu.navigator.repositories.TraineeRepositories;
 import org.springframework.stereotype.Service;
@@ -14,19 +15,30 @@ public class TraineeServices {
 
 TraineeRepositories traineeRepositories;
 
+
 public TraineeServices(TraineeRepositories traineeRepositories) {
     this.traineeRepositories = traineeRepositories;
 }
+
 
 public List<Trainee> getAllTrainees() {
     return traineeRepositories.findAll();
 }
 
+
 public Trainee getTraineeById(long id) {
     return traineeRepositories.findById(id).get();
 }
 
+
 public Trainee createTrainee(TraineeDto traineeDto) {
+
+    Trainee email=traineeRepositories.findByEmail(traineeDto.email());
+
+    if(email==null){
+        throw new DuplicateEmailException("Email already exists");
+    }
+
     Trainee trainee = new Trainee();
    trainee.setEmail(traineeDto.email());
    trainee.setUsername(traineeDto.username());
@@ -36,7 +48,15 @@ public Trainee createTrainee(TraineeDto traineeDto) {
    return traineeRepositories.save(trainee);
 }
 
+
 public Trainee updateTrainee(long id, TraineeDto traineeDto) {
+
+    Trainee email=traineeRepositories.findByEmail(traineeDto.email());
+
+    if(email==null){
+        throw new DuplicateEmailException("Email already exists");
+    }
+
     Trainee trainee = traineeRepositories.findById(id).get();
     trainee.setFullName(traineeDto.fullName());
     trainee.setCourses(traineeDto.courses());
@@ -45,6 +65,7 @@ public Trainee updateTrainee(long id, TraineeDto traineeDto) {
     trainee.setUsername(traineeDto.username());
     return traineeRepositories.save(trainee);
 }
+
 
 public void deleteTrainee(long id) {
     traineeRepositories.deleteById(id);

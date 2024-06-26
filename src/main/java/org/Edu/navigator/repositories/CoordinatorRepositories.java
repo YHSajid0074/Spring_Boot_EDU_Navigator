@@ -16,4 +16,6 @@ public interface CoordinatorRepositories extends JpaRepository<Coordinator, Long
             )
     Set<CustomCoordinatorResponseDto> findall();
 
+    public Coordinator findByEmail(String email);
+
 }

@@ -3,11 +3,13 @@ package org.Edu.navigator.services;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.Edu.navigator.Dto.CoordinatorDto;
+import org.Edu.navigator.Exception.DuplicateEmailException;
 import org.Edu.navigator.entities.Coordinator;
 import org.Edu.navigator.repositories.CoordinatorRepositories;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.DuplicateFormatFlagsException;
 import java.util.List;
 
 @Service
@@ -22,6 +24,13 @@ public class CoordinatorServices {
     }
 
     public Coordinator create(CoordinatorDto coordinatorDto) {
+
+        Coordinator email=coordinatorRepositories.findByEmail(coordinatorDto.email());
+
+        if(email==null){
+            throw  new DuplicateEmailException("Email Already Exists");
+        }
+
         Coordinator coordinator = new Coordinator();
         coordinator.setFullName(coordinatorDto.fullName());
         coordinator.setEmail(coordinatorDto.email());
@@ -42,6 +51,12 @@ public class CoordinatorServices {
     }
 
     public Coordinator update(long id, CoordinatorDto coordinatorDto) {
+
+        Coordinator email=coordinatorRepositories.findByEmail(coordinatorDto.email());
+        if(email==null){
+            throw  new DuplicateEmailException("Email Already Exists");
+        }
+
         Coordinator coordinator=coordinatorRepositories.findById(id).get();
         coordinator.setEmail(coordinatorDto.email());
         coordinator.setFullName(coordinatorDto.fullName());
