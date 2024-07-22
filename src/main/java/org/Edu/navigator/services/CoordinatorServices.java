@@ -1,15 +1,12 @@
 package org.Edu.navigator.services;
 
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import org.Edu.navigator.Dto.CoordinatorDto;
+import org.Edu.navigator.Dto.RequestDto.CoordinatorRequestDto;
 import org.Edu.navigator.Exception.DuplicateEmailException;
 import org.Edu.navigator.entities.Coordinator;
 import org.Edu.navigator.repositories.CoordinatorRepositories;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.DuplicateFormatFlagsException;
 import java.util.List;
 
 @Service
@@ -23,20 +20,20 @@ public class CoordinatorServices {
         this.coordinatorRepositories=coordinatorRepositories;
     }
 
-    public Coordinator create(CoordinatorDto coordinatorDto) {
+    public Coordinator create(CoordinatorRequestDto coordinatorRequestDto) {
 
-        Coordinator email=coordinatorRepositories.findByEmail(coordinatorDto.email());
+        Coordinator email=coordinatorRepositories.findByEmail(coordinatorRequestDto.email());
 
         if(email==null){
             throw  new DuplicateEmailException("Email Already Exists");
         }
 
         Coordinator coordinator = new Coordinator();
-        coordinator.setFullName(coordinatorDto.fullName());
-        coordinator.setEmail(coordinatorDto.email());
-        coordinator.setUsername(coordinatorDto.username());
-        coordinator.setDirector(coordinatorDto.director());
-        coordinator.setTrainers(coordinatorDto.trainers());
+        coordinator.setFullName(coordinatorRequestDto.fullName());
+        coordinator.setEmail(coordinatorRequestDto.email());
+        coordinator.setUsername(coordinatorRequestDto.username());
+        coordinator.setDirector(coordinatorRequestDto.director());
+        coordinator.setTrainers(coordinatorRequestDto.trainers());
         return coordinator;
     }
 
@@ -50,19 +47,19 @@ public class CoordinatorServices {
         return coordinators;
     }
 
-    public Coordinator update(long id, CoordinatorDto coordinatorDto) {
+    public Coordinator update(long id, CoordinatorRequestDto coordinatorRequestDto) {
 
-        Coordinator email=coordinatorRepositories.findByEmail(coordinatorDto.email());
+        Coordinator email=coordinatorRepositories.findByEmail(coordinatorRequestDto.email());
         if(email==null){
             throw  new DuplicateEmailException("Email Already Exists");
         }
 
         Coordinator coordinator=coordinatorRepositories.findById(id).get();
-        coordinator.setEmail(coordinatorDto.email());
-        coordinator.setFullName(coordinatorDto.fullName());
-        coordinator.setUsername(coordinatorDto.username());
-        coordinator.setDirector(coordinatorDto.director());
-        coordinator.setTrainers(coordinatorDto.trainers());
+        coordinator.setEmail(coordinatorRequestDto.email());
+        coordinator.setFullName(coordinatorRequestDto.fullName());
+        coordinator.setUsername(coordinatorRequestDto.username());
+        coordinator.setDirector(coordinatorRequestDto.director());
+        coordinator.setTrainers(coordinatorRequestDto.trainers());
         return coordinator;
     }
 

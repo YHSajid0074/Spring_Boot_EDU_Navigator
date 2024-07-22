@@ -1,7 +1,7 @@
 package org.Edu.navigator.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.Edu.navigator.Dto.TrainerDto;
+import org.Edu.navigator.Dto.RequestDto.TrainerRequestDto;
 import org.Edu.navigator.services.TrainerServices;
 import org.Edu.navigator.entities.Trainer;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +24,7 @@ public class TrainerController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Trainer> updateTrainer(@PathVariable long id, @RequestBody TrainerDto trainer) {
+    public ResponseEntity<Trainer> updateTrainer(@PathVariable long id, @RequestBody TrainerRequestDto trainer) {
         Trainer updatedTrainer = trainerServices.updateTrainer(id, trainer);
         return ResponseEntity.ok(updatedTrainer);
     }
@@ -36,8 +36,8 @@ public class TrainerController {
     }
 
     @PostMapping
-    public ResponseEntity<Trainer> addTrainer(@RequestBody TrainerDto trainerDto) {
-        Trainer createdTrainer = trainerServices.createTrainer(trainerDto);
+    public ResponseEntity<Trainer> addTrainer(@RequestBody TrainerRequestDto trainerRequestDto) {
+        Trainer createdTrainer = trainerServices.createTrainer(trainerRequestDto);
         return ResponseEntity.ok(createdTrainer);
     }
 

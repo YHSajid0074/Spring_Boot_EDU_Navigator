@@ -1,7 +1,7 @@
 package org.Edu.navigator.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.Edu.navigator.Dto.CoordinatorDto;
+import org.Edu.navigator.Dto.RequestDto.CoordinatorRequestDto;
 import org.Edu.navigator.entities.Coordinator;
 import org.Edu.navigator.services.CoordinatorServices;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +18,7 @@ public class CoordinatorController {
 
 
     @PostMapping
-   public ResponseEntity<String> create(@RequestBody CoordinatorDto coordinator){
+   public ResponseEntity<String> create(@RequestBody CoordinatorRequestDto coordinator){
        coordinatorServices.create(coordinator);
        return ResponseEntity.ok("Successfully Created");
    }
@@ -43,8 +43,8 @@ public class CoordinatorController {
    }
 
    @PutMapping("{id}")
-   public ResponseEntity<String> update(@PathVariable long id,@RequestBody CoordinatorDto coordinatorDto){
-        coordinatorServices.update(id,coordinatorDto);
+   public ResponseEntity<String> update(@PathVariable long id,@RequestBody CoordinatorRequestDto coordinatorRequestDto){
+        coordinatorServices.update(id, coordinatorRequestDto);
         return ResponseEntity.ok("Successfully Updated");
    }
 

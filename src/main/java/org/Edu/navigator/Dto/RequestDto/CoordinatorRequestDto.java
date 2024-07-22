@@ -1,11 +1,11 @@
-package org.Edu.navigator.Dto;
+package org.Edu.navigator.Dto.RequestDto;
 
 import org.Edu.navigator.entities.Director;
 import org.Edu.navigator.entities.Trainer;
 
 import java.util.Set;
 
-public record CoordinatorDto(
+public record CoordinatorRequestDto(
         String fullName,
         String username,
         String email,

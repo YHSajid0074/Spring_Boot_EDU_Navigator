@@ -1,7 +1,7 @@
 package org.Edu.navigator.services;
 
 import lombok.RequiredArgsConstructor;
-import org.Edu.navigator.Dto.TraineeDto;
+import org.Edu.navigator.Dto.RequestDto.TraineeRequestDto;
 import org.Edu.navigator.Exception.DuplicateEmailException;
 import org.Edu.navigator.entities.Trainee;
 import org.Edu.navigator.repositories.TraineeRepositories;
@@ -31,38 +31,38 @@ public Trainee getTraineeById(long id) {
 }
 
 
-public Trainee createTrainee(TraineeDto traineeDto) {
+public Trainee createTrainee(TraineeRequestDto traineeRequestDto) {
 
-    Trainee email=traineeRepositories.findByEmail(traineeDto.email());
+    Trainee email=traineeRepositories.findByEmail(traineeRequestDto.email());
 
     if(email==null){
         throw new DuplicateEmailException("Email already exists");
     }
 
     Trainee trainee = new Trainee();
-   trainee.setEmail(traineeDto.email());
-   trainee.setUsername(traineeDto.username());
-   trainee.setFullName(traineeDto.fullName());
-   trainee.setTrainer(traineeDto.trainer());
-   trainee.setCourses(traineeDto.courses());
+   trainee.setEmail(traineeRequestDto.email());
+   trainee.setUsername(traineeRequestDto.username());
+   trainee.setFullName(traineeRequestDto.fullName());
+   trainee.setTrainer(traineeRequestDto.trainer());
+   trainee.setCourses(traineeRequestDto.courses());
    return traineeRepositories.save(trainee);
 }
 
 
-public Trainee updateTrainee(long id, TraineeDto traineeDto) {
+public Trainee updateTrainee(long id, TraineeRequestDto traineeRequestDto) {
 
-    Trainee email=traineeRepositories.findByEmail(traineeDto.email());
+    Trainee email=traineeRepositories.findByEmail(traineeRequestDto.email());
 
     if(email==null){
         throw new DuplicateEmailException("Email already exists");
     }
 
     Trainee trainee = traineeRepositories.findById(id).get();
-    trainee.setFullName(traineeDto.fullName());
-    trainee.setCourses(traineeDto.courses());
-    trainee.setTrainer(traineeDto.trainer());
-    trainee.setEmail(traineeDto.email());
-    trainee.setUsername(traineeDto.username());
+    trainee.setFullName(traineeRequestDto.fullName());
+    trainee.setCourses(traineeRequestDto.courses());
+    trainee.setTrainer(traineeRequestDto.trainer());
+    trainee.setEmail(traineeRequestDto.email());
+    trainee.setUsername(traineeRequestDto.username());
     return traineeRepositories.save(trainee);
 }
 

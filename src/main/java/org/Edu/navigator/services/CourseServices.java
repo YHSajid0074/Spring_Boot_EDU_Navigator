@@ -1,8 +1,6 @@
 package org.Edu.navigator.services;
 
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import org.Edu.navigator.Dto.CourseDto;
+import org.Edu.navigator.Dto.RequestDto.CourseRequestDto;
 import org.Edu.navigator.entities.Course;
 import org.Edu.navigator.repositories.CourseRepositories;
 import org.springframework.stereotype.Service;
@@ -28,19 +26,19 @@ public class CourseServices {
         return courseRepositories.findAll();
     }
 
-    public Course createCourse(CourseDto courseDto) {
+    public Course createCourse(CourseRequestDto courseRequestDto) {
         Course course = new Course();
-        course.setDuration(courseDto.duration());
-        course.setName(courseDto.name());
-        course.setTrainee(courseDto.trainee());
+        course.setDuration(courseRequestDto.duration());
+        course.setName(courseRequestDto.name());
+        course.setTrainee(courseRequestDto.trainee());
         return courseRepositories.save(course);
     }
 
-    public Course updateCourse(long id,CourseDto courseDto) {
+    public Course updateCourse(long id, CourseRequestDto courseRequestDto) {
      Course course=courseRepositories.findById(id).get();
-     course.setName(courseDto.name());
-     course.setTrainee(courseDto.trainee());
-     course.setDuration(courseDto.duration());
+     course.setName(courseRequestDto.name());
+     course.setTrainee(courseRequestDto.trainee());
+     course.setDuration(courseRequestDto.duration());
      return courseRepositories.save(course);
     }
 

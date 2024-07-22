@@ -1,10 +1,10 @@
-package org.Edu.navigator.Dto;
+package org.Edu.navigator.Dto.RequestDto;
 
 import org.Edu.navigator.entities.Coordinator;
 
 import java.util.Set;
 
-public record DirectorDto(
+public record DirectorRequestDto(
         String fullName,
         String username,
         String email,

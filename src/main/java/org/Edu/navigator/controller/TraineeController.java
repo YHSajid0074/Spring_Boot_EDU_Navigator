@@ -1,7 +1,7 @@
 package org.Edu.navigator.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.Edu.navigator.Dto.TraineeDto;
+import org.Edu.navigator.Dto.RequestDto.TraineeRequestDto;
 import org.Edu.navigator.services.TraineeServices;
 import org.Edu.navigator.entities.Trainee;
 import org.springframework.http.ResponseEntity;
@@ -22,15 +22,15 @@ public class TraineeController {
     }
 
      @PostMapping
-    public ResponseEntity<String> createTrainee(@RequestBody TraineeDto traineeDto){
-        traineeServices.createTrainee(traineeDto);
+    public ResponseEntity<String> createTrainee(@RequestBody TraineeRequestDto traineeRequestDto){
+        traineeServices.createTrainee(traineeRequestDto);
         return ResponseEntity.ok("Trainee created");
     }
 
 
      @PutMapping
-    public ResponseEntity<String> updateTrainee(@PathVariable long id ,@RequestBody TraineeDto traineeDto){
-        traineeServices.updateTrainee(id,traineeDto);
+    public ResponseEntity<String> updateTrainee(@PathVariable long id ,@RequestBody TraineeRequestDto traineeRequestDto){
+        traineeServices.updateTrainee(id, traineeRequestDto);
         return ResponseEntity.ok("Trainee updated");
     }
     @DeleteMapping("{id}")

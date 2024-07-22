@@ -1,7 +1,7 @@
 package org.Edu.navigator.services;
 
 import lombok.RequiredArgsConstructor;
-import org.Edu.navigator.Dto.TrainerDto;
+import org.Edu.navigator.Dto.RequestDto.TrainerRequestDto;
 import org.Edu.navigator.Exception.DuplicateEmailException;
 import org.Edu.navigator.entities.Trainer;
 import org.Edu.navigator.repositories.TrainerRepositories;
@@ -30,37 +30,37 @@ public class TrainerServices {
  }
 
 
- public Trainer createTrainer(TrainerDto trainerDto) {
-     Trainer email=trainerRepositories.findByEmail(trainerDto.email());
+ public Trainer createTrainer(TrainerRequestDto trainerRequestDto) {
+     Trainer email=trainerRepositories.findByEmail(trainerRequestDto.email());
 
      if(email!=null){
          throw new DuplicateEmailException("Email already exists");
      }
 
      Trainer trainer = new Trainer();
-     trainer.setCoordinator(trainerDto.coordinator());
-     trainer.setUsername(trainerDto.username());
-     trainer.setEmail(trainerDto.email());
-     trainer.setTrainees(trainerDto.trainees());
-     trainer.setFullName(trainerDto.fullName());
+     trainer.setCoordinator(trainerRequestDto.coordinator());
+     trainer.setUsername(trainerRequestDto.username());
+     trainer.setEmail(trainerRequestDto.email());
+     trainer.setTrainees(trainerRequestDto.trainees());
+     trainer.setFullName(trainerRequestDto.fullName());
      return trainerRepositories.save(trainer);
  }
 
 
- public Trainer updateTrainer(long id, TrainerDto trainerDto) {
+ public Trainer updateTrainer(long id, TrainerRequestDto trainerRequestDto) {
 
-     Trainer email=trainerRepositories.findByEmail(trainerDto.email());
+     Trainer email=trainerRepositories.findByEmail(trainerRequestDto.email());
 
      if(email!=null){
        throw new DuplicateEmailException("Email already exists");
      }
 
      Trainer trainer = trainerRepositories.getOne(id);
-     trainer.setCoordinator(trainerDto.coordinator());
-     trainer.setUsername(trainerDto.username());
-     trainer.setEmail(trainerDto.email());
-     trainer.setTrainees(trainerDto.trainees());
-     trainer.setFullName(trainerDto.fullName());
+     trainer.setCoordinator(trainerRequestDto.coordinator());
+     trainer.setUsername(trainerRequestDto.username());
+     trainer.setEmail(trainerRequestDto.email());
+     trainer.setTrainees(trainerRequestDto.trainees());
+     trainer.setFullName(trainerRequestDto.fullName());
      return trainerRepositories.save(trainer);
  }
 

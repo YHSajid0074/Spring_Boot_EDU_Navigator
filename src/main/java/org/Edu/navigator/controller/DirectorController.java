@@ -1,7 +1,7 @@
 package org.Edu.navigator.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.Edu.navigator.Dto.DirectorDto;
+import org.Edu.navigator.Dto.RequestDto.DirectorRequestDto;
 import org.Edu.navigator.entities.Director;
 import org.Edu.navigator.services.DirectorServices;
 import org.springframework.http.ResponseEntity;
@@ -21,30 +21,30 @@ public class DirectorController {
 
 
     @PostMapping("post")
-    public ResponseEntity<Director>create(DirectorDto directorDto) {
-        Director director1= directorServices.createDirector(directorDto);
-       return ResponseEntity.ok(director1);
+    public ResponseEntity<Director> create(DirectorRequestDto directorRequestDto) {
+        Director director1 = directorServices.createDirector(directorRequestDto);
+        return ResponseEntity.ok(director1);
 
     }
 
 
     @GetMapping("{id}")
-    public ResponseEntity<Director>getID(@PathVariable Long id) {
-        Director director=directorServices.getDirectorById(id);
+    public ResponseEntity<Director> getID(@PathVariable Long id) {
+        Director director = directorServices.getDirectorById(id);
         return ResponseEntity.ok(director);
 
     }
 
 
     @GetMapping("GetAll")
-    public ResponseEntity<List<Director>>getAll() {
-        List<Director>directors= directorServices.getAllDirectors();
+    public ResponseEntity<List<Director>> getAll() {
+        List<Director> directors = directorServices.getAllDirectors();
         return ResponseEntity.ok(directors);
     }
 
 
     @DeleteMapping("{id}")
-    public ResponseEntity<String>delete(@PathVariable long id) {
+    public ResponseEntity<String> delete(@PathVariable long id) {
         directorServices.deleteDirector(id);
         return ResponseEntity.ok("Deleted Successfully");
     }

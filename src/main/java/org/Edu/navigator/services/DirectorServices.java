@@ -1,13 +1,10 @@
 package org.Edu.navigator.services;
 
-import lombok.RequiredArgsConstructor;
-import org.Edu.navigator.Dto.DirectorDto;
+import org.Edu.navigator.Dto.RequestDto.DirectorRequestDto;
 import org.Edu.navigator.entities.Director;
 import org.Edu.navigator.repositories.DirectorRepositories;
 import org.springframework.dao.DuplicateKeyException;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,33 +26,33 @@ public class DirectorServices {
         return directorRepositories.getById(id);
     }
 
-    public Director createDirector(DirectorDto directorDto) {
+    public Director createDirector(DirectorRequestDto directorRequestDto) {
 
-        Director email = directorRepositories.findByEmail(directorDto.email());
+        Director email = directorRepositories.findByEmail(directorRequestDto.email());
      if (email != null) {
          throw new DuplicateKeyException("Email already exists");
      }
 
         Director director = new Director();
-        director.setCoordinators(directorDto.coordinators());
-        director.setEmail(directorDto.email());
-        director.setUsername(directorDto.username());
-        director.setFullName(directorDto.fullName());
+        director.setCoordinators(directorRequestDto.coordinators());
+        director.setEmail(directorRequestDto.email());
+        director.setUsername(directorRequestDto.username());
+        director.setFullName(directorRequestDto.fullName());
         return directorRepositories.save(director);
     }
 
-    public Director updateDirector(Long id,DirectorDto directorDto) {
+    public Director updateDirector(Long id, DirectorRequestDto directorRequestDto) {
 
-        Director email = directorRepositories.findByEmail(directorDto.email());
+        Director email = directorRepositories.findByEmail(directorRequestDto.email());
         if (email == null) {
             throw new DuplicateKeyException("Email already exist");
         }
 
         Director director = directorRepositories.getById(id);
-        director.setCoordinators(directorDto.coordinators());
-        director.setEmail(directorDto.email());
-        director.setUsername(directorDto.username());
-        director.setFullName(directorDto.fullName());
+        director.setCoordinators(directorRequestDto.coordinators());
+        director.setEmail(directorRequestDto.email());
+        director.setUsername(directorRequestDto.username());
+        director.setFullName(directorRequestDto.fullName());
         return directorRepositories.save(director);
 
     }
