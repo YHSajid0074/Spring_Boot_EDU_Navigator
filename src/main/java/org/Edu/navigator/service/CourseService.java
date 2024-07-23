@@ -1,7 +1,7 @@
 package org.Edu.navigator.service;
 
 import org.Edu.navigator.dto.request.CourseRequestDto;
-import org.Edu.navigator.model.Course;
+import org.Edu.navigator.model.course.Course;
 
 import java.util.List;
 

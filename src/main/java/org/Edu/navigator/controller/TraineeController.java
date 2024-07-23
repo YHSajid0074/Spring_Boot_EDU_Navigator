@@ -1,9 +1,13 @@
 package org.Edu.navigator.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.Edu.navigator.common.constant.Message;
+import org.Edu.navigator.common.routes.ApiConstants;
+import org.Edu.navigator.common.routes.Router;
 import org.Edu.navigator.dto.request.TraineeRequestDto;
 import org.Edu.navigator.service.Impl.TraineeServiceImpl;
-import org.Edu.navigator.model.Trainee;
+import org.Edu.navigator.model.trainee.Trainee;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,7 +15,8 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("trainee")
+@RequestMapping(path= Router.TRAINEE)
+@Tag(name= ApiConstants.TRAINEE)
 public class TraineeController {
 
     TraineeServiceImpl traineeServiceImpl;
@@ -24,35 +29,35 @@ public class TraineeController {
     }
 
 
-    @PostMapping
+    @PostMapping(Router.CREATE_TRAINEE)
     public ResponseEntity<String> createTrainee(@RequestBody TraineeRequestDto traineeRequestDto) {
 
         traineeServiceImpl.createTrainee(traineeRequestDto);
 
-        return ResponseEntity.ok("Trainee created");
+        return ResponseEntity.ok(Message.CREATED_SUCCESSFULLY);
     }
 
 
-    @PutMapping
+    @PutMapping(Router.UPDATE_TRAINEE)
     public ResponseEntity<String> updateTrainee(@PathVariable Long id, @RequestBody TraineeRequestDto traineeRequestDto) {
 
         traineeServiceImpl.updateTrainee(id, traineeRequestDto);
 
-        return ResponseEntity.ok("Trainee updated");
+        return ResponseEntity.ok(Message.UPDATED_SUCCESSFULLY);
     }
 
 
-    @DeleteMapping("{id}")
+    @DeleteMapping(Router.DELETE_TRAINEE)
     public ResponseEntity<String> deleteTrainee(@PathVariable Long id) {
 
         traineeServiceImpl.deleteTrainee(id);
 
-        return ResponseEntity.ok("Trainee deleted");
+        return ResponseEntity.ok(Message.DELETED_SUCCESSFULLY);
 
     }
 
 
-    @GetMapping("{id}")
+    @GetMapping(Router.GET_TRAINEE_BY_ID)
     public ResponseEntity<Trainee> getTraineeById(@PathVariable Long id) {
 
         Trainee trainee = traineeServiceImpl.getTraineeById(id);
@@ -62,7 +67,7 @@ public class TraineeController {
     }
 
 
-    @GetMapping
+    @GetMapping(Router.GET_ALL_TRAINEE)
     public ResponseEntity<List<Trainee>> getAllTrainee() {
 
         return ResponseEntity.ok(traineeServiceImpl.getAllTrainees());

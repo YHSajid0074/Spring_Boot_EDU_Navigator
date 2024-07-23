@@ -1,6 +1,6 @@
-package org.Edu.navigator.repository;
+package org.Edu.navigator.repository.director;
 
-import org.Edu.navigator.model.Director;
+import org.Edu.navigator.model.director.Director;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface DirectorRepositories extends JpaRepository<Director, Long> {

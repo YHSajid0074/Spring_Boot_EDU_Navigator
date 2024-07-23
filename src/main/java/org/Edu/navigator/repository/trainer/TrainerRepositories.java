@@ -1,9 +1,7 @@
-package org.Edu.navigator.repository;
+package org.Edu.navigator.repository.trainer;
 
-import org.Edu.navigator.model.Trainer;
+import org.Edu.navigator.model.trainer.Trainer;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.Optional;
 
 public interface TrainerRepositories extends JpaRepository<Trainer, Long> {
 

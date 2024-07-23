@@ -1,4 +1,4 @@
-package org.Edu.navigator.exception;
+package org.Edu.navigator.common.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

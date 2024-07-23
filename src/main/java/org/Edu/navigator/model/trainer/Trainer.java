@@ -1,10 +1,13 @@
-package org.Edu.navigator.model;
+package org.Edu.navigator.model.trainer;
 import java.util.*;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.Edu.navigator.model.baseEntity.BaseEntity;
+import org.Edu.navigator.model.coordinator.Coordinator;
+import org.Edu.navigator.model.trainee.Trainee;
 
 @Getter
 @Setter

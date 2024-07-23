@@ -1,7 +1,7 @@
 package org.Edu.navigator.dto.request;
 
-import org.Edu.navigator.model.Course;
-import org.Edu.navigator.model.Trainer;
+import org.Edu.navigator.model.course.Course;
+import org.Edu.navigator.model.trainer.Trainer;
 
 import java.util.Set;
 

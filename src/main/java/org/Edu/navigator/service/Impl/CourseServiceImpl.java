@@ -1,8 +1,8 @@
 package org.Edu.navigator.service.Impl;
 
 import org.Edu.navigator.dto.request.CourseRequestDto;
-import org.Edu.navigator.model.Course;
-import org.Edu.navigator.repository.CourseRepositories;
+import org.Edu.navigator.model.course.Course;
+import org.Edu.navigator.repository.course.CourseRepositories;
 import org.Edu.navigator.service.CourseService;
 import org.springframework.stereotype.Service;
 

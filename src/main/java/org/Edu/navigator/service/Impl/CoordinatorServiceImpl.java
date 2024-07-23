@@ -1,10 +1,9 @@
 package org.Edu.navigator.service.Impl;
 
-import lombok.NoArgsConstructor;
 import org.Edu.navigator.dto.request.CoordinatorRequestDto;
-import org.Edu.navigator.exception.DuplicateEmailException;
-import org.Edu.navigator.model.Coordinator;
-import org.Edu.navigator.repository.CoordinatorRepositories;
+import org.Edu.navigator.common.exception.DuplicateEmailException;
+import org.Edu.navigator.model.coordinator.Coordinator;
+import org.Edu.navigator.repository.coordinator.CoordinatorRepositories;
 import org.Edu.navigator.service.CoordinatorService;
 import org.springframework.stereotype.Service;
 

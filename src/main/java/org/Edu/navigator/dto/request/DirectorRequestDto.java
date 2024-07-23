@@ -1,6 +1,6 @@
 package org.Edu.navigator.dto.request;
 
-import org.Edu.navigator.model.Coordinator;
+import org.Edu.navigator.model.coordinator.Coordinator;
 
 import java.util.Set;
 

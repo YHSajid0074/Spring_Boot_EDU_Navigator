@@ -1,4 +1,4 @@
-package org.Edu.navigator.exception;
+package org.Edu.navigator.common.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

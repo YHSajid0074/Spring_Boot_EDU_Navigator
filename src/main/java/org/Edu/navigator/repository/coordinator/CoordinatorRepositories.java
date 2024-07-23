@@ -1,7 +1,7 @@
-package org.Edu.navigator.repository;
+package org.Edu.navigator.repository.coordinator;
 
 import org.Edu.navigator.dto.response.CoordinatorResponseDto;
-import org.Edu.navigator.model.Coordinator;
+import org.Edu.navigator.model.coordinator.Coordinator;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

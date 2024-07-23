@@ -1,10 +1,9 @@
 package org.Edu.navigator.service.Impl;
 
-import lombok.RequiredArgsConstructor;
 import org.Edu.navigator.dto.request.TrainerRequestDto;
-import org.Edu.navigator.exception.DuplicateEmailException;
-import org.Edu.navigator.model.Trainer;
-import org.Edu.navigator.repository.TrainerRepositories;
+import org.Edu.navigator.common.exception.DuplicateEmailException;
+import org.Edu.navigator.model.trainer.Trainer;
+import org.Edu.navigator.repository.trainer.TrainerRepositories;
 import org.Edu.navigator.service.TrainerService;
 import org.springframework.stereotype.Service;
 

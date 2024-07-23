@@ -1,7 +1,7 @@
 package org.Edu.navigator.service;
 
 import org.Edu.navigator.dto.request.DirectorRequestDto;
-import org.Edu.navigator.model.Director;
+import org.Edu.navigator.model.director.Director;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package org.Edu.navigator.dto.request;
 
-import org.Edu.navigator.model.Director;
-import org.Edu.navigator.model.Trainer;
+import org.Edu.navigator.model.director.Director;
+import org.Edu.navigator.model.trainer.Trainer;
 
 import java.util.Set;
 

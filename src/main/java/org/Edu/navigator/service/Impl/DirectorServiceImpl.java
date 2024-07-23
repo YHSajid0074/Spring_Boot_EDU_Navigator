@@ -1,8 +1,8 @@
 package org.Edu.navigator.service.Impl;
 
 import org.Edu.navigator.dto.request.DirectorRequestDto;
-import org.Edu.navigator.model.Director;
-import org.Edu.navigator.repository.DirectorRepositories;
+import org.Edu.navigator.model.director.Director;
+import org.Edu.navigator.repository.director.DirectorRepositories;
 import org.Edu.navigator.service.DirectorService;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package org.Edu.navigator.model;
+package org.Edu.navigator.model.coordinator;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -8,6 +8,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.Edu.navigator.model.director.Director;
+import org.Edu.navigator.model.trainer.Trainer;
+import org.Edu.navigator.model.baseEntity.BaseEntity;
 
 import java.util.Set;
 

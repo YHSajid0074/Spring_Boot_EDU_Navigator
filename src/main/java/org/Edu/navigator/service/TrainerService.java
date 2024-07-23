@@ -1,7 +1,7 @@
 package org.Edu.navigator.service;
 
 import org.Edu.navigator.dto.request.TrainerRequestDto;
-import org.Edu.navigator.model.Trainer;
+import org.Edu.navigator.model.trainer.Trainer;
 
 import java.util.List;
 

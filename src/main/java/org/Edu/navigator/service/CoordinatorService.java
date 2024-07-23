@@ -1,7 +1,7 @@
 package org.Edu.navigator.service;
 
 import org.Edu.navigator.dto.request.CoordinatorRequestDto;
-import org.Edu.navigator.model.Coordinator;
+import org.Edu.navigator.model.coordinator.Coordinator;
 
 import java.util.List;
 
