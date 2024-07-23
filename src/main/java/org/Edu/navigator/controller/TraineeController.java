@@ -1,9 +1,9 @@
 package org.Edu.navigator.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.Edu.navigator.Dto.RequestDto.TraineeRequestDto;
-import org.Edu.navigator.services.TraineeServices;
-import org.Edu.navigator.entities.Trainee;
+import org.Edu.navigator.dto.request.TraineeRequestDto;
+import org.Edu.navigator.service.Impl.TraineeServiceImpl;
+import org.Edu.navigator.model.Trainee;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,42 +14,60 @@ import java.util.List;
 @RequestMapping("trainee")
 public class TraineeController {
 
-    TraineeServices traineeServices;
+    TraineeServiceImpl traineeServiceImpl;
 
 
-    public TraineeController(TraineeServices traineeServices) {
-        this.traineeServices = traineeServices;
+    public TraineeController(TraineeServiceImpl traineeServiceImpl) {
+
+        this.traineeServiceImpl = traineeServiceImpl;
+
     }
 
-     @PostMapping
-    public ResponseEntity<String> createTrainee(@RequestBody TraineeRequestDto traineeRequestDto){
-        traineeServices.createTrainee(traineeRequestDto);
+
+    @PostMapping
+    public ResponseEntity<String> createTrainee(@RequestBody TraineeRequestDto traineeRequestDto) {
+
+        traineeServiceImpl.createTrainee(traineeRequestDto);
+
         return ResponseEntity.ok("Trainee created");
     }
 
 
-     @PutMapping
-    public ResponseEntity<String> updateTrainee(@PathVariable long id ,@RequestBody TraineeRequestDto traineeRequestDto){
-        traineeServices.updateTrainee(id, traineeRequestDto);
+    @PutMapping
+    public ResponseEntity<String> updateTrainee(@PathVariable Long id, @RequestBody TraineeRequestDto traineeRequestDto) {
+
+        traineeServiceImpl.updateTrainee(id, traineeRequestDto);
+
         return ResponseEntity.ok("Trainee updated");
     }
+
+
     @DeleteMapping("{id}")
-    public ResponseEntity<String> deleteTrainee(@PathVariable long id){
-        traineeServices.deleteTrainee(id);
+    public ResponseEntity<String> deleteTrainee(@PathVariable Long id) {
+
+        traineeServiceImpl.deleteTrainee(id);
+
         return ResponseEntity.ok("Trainee deleted");
+
     }
+
 
     @GetMapping("{id}")
-    public ResponseEntity<Trainee> getTraineeById(@PathVariable long id){
-      Trainee trainee=traineeServices.getTraineeById(id);
-      return ResponseEntity.ok(trainee);
+    public ResponseEntity<Trainee> getTraineeById(@PathVariable Long id) {
+
+        Trainee trainee = traineeServiceImpl.getTraineeById(id);
+
+        return ResponseEntity.ok(trainee);
+
     }
+
+
     @GetMapping
-    public ResponseEntity<List<Trainee>> getAllTrainee(){
-      return ResponseEntity.ok(traineeServices.getAllTrainees());
+    public ResponseEntity<List<Trainee>> getAllTrainee() {
+
+        return ResponseEntity.ok(traineeServiceImpl.getAllTrainees());
+
     }
-
-
 
 
 }

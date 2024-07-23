@@ -1,15 +1,13 @@
 package org.Edu.navigator.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.Edu.navigator.Dto.RequestDto.DirectorRequestDto;
-import org.Edu.navigator.entities.Director;
-import org.Edu.navigator.services.DirectorServices;
+import org.Edu.navigator.dto.request.DirectorRequestDto;
+import org.Edu.navigator.model.Director;
+import org.Edu.navigator.service.Impl.DirectorServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
-import static org.springframework.http.ResponseEntity.ok;
 
 @RestController
 @RequiredArgsConstructor
@@ -17,12 +15,12 @@ import static org.springframework.http.ResponseEntity.ok;
 public class DirectorController {
 
 
-    private final DirectorServices directorServices;
+    private final DirectorServiceImpl directorServiceImpl;
 
 
     @PostMapping("post")
     public ResponseEntity<Director> create(DirectorRequestDto directorRequestDto) {
-        Director director1 = directorServices.createDirector(directorRequestDto);
+        Director director1 = directorServiceImpl.createDirector(directorRequestDto);
         return ResponseEntity.ok(director1);
 
     }
@@ -30,7 +28,7 @@ public class DirectorController {
 
     @GetMapping("{id}")
     public ResponseEntity<Director> getID(@PathVariable Long id) {
-        Director director = directorServices.getDirectorById(id);
+        Director director = directorServiceImpl.getDirectorById(id);
         return ResponseEntity.ok(director);
 
     }
@@ -38,14 +36,14 @@ public class DirectorController {
 
     @GetMapping("GetAll")
     public ResponseEntity<List<Director>> getAll() {
-        List<Director> directors = directorServices.getAllDirectors();
+        List<Director> directors = directorServiceImpl.getAllDirectors();
         return ResponseEntity.ok(directors);
     }
 
 
     @DeleteMapping("{id}")
-    public ResponseEntity<String> delete(@PathVariable long id) {
-        directorServices.deleteDirector(id);
+    public ResponseEntity<String> delete(@PathVariable Long id) {
+        directorServiceImpl.deleteDirector(id);
         return ResponseEntity.ok("Deleted Successfully");
     }
 
