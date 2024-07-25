@@ -1,6 +1,7 @@
 package org.Edu.navigator.service;
 
 import org.Edu.navigator.dto.request.CoordinatorRequestDto;
+import org.Edu.navigator.dto.response.CoordinatorResponseDto;
 import org.Edu.navigator.model.coordinator.Coordinator;
 
 import java.util.List;
@@ -12,8 +13,8 @@ public interface CoordinatorService {
 
     Coordinator createCoordinator(CoordinatorRequestDto coordinatorRequestDto);
 
-    Coordinator getCoordinator(Long id);
+    CoordinatorResponseDto getCoordinator(Long id);
 
-    List<Coordinator >GetAllCoordinator();
+    List<CoordinatorResponseDto >GetAllCoordinator();
 
 }

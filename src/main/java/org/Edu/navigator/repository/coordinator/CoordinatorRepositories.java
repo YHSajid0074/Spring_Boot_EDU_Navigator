@@ -4,18 +4,30 @@ import org.Edu.navigator.dto.response.CoordinatorResponseDto;
 import org.Edu.navigator.model.coordinator.Coordinator;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
-import java.util.Set;
+import java.util.List;
+import java.util.Optional;
 
 public interface CoordinatorRepositories extends JpaRepository<Coordinator, Long> {
 
     @Query("""
-          SELECT coordinator 
-            FROM Coordinator coordinator
-              """
+          SELECT c
+            FROM Coordinator c
+          """
             )
-    Set<CoordinatorResponseDto> getAll();
+    List<CoordinatorResponseDto> getAllCoordinator();
 
-    public Coordinator findByEmail(String email);
+
+    Optional <Coordinator> findByEmail(String email);
+
+
+    @Query("""
+            SELECT c
+               FROM Coordinator c 
+                  WHERE c.id=:id
+                  """
+    )
+     CoordinatorResponseDto findCoordinatorById(@Param("id") Long id);
 
 }

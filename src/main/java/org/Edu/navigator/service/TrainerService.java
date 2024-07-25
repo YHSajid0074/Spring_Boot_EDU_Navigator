@@ -1,6 +1,7 @@
 package org.Edu.navigator.service;
 
 import org.Edu.navigator.dto.request.TrainerRequestDto;
+import org.Edu.navigator.dto.response.TrainerResponseDto;
 import org.Edu.navigator.model.trainer.Trainer;
 
 import java.util.List;
@@ -13,10 +14,10 @@ public interface TrainerService {
 
     public void deleteTrainer(Long id);
 
-    public List<Trainer> getAllTrainers();
+    public List<TrainerResponseDto> getAllTrainers();
 
-    public Trainer getTrainerById(Long id);
+    public TrainerResponseDto getTrainerById(Long id);
 
-    public Trainer getTrainerByName(String name);
+    public TrainerResponseDto getTrainerByName(String name);
 
 }

@@ -6,6 +6,7 @@ import org.Edu.navigator.common.constant.Message;
 import org.Edu.navigator.common.routes.ApiConstants;
 import org.Edu.navigator.common.routes.Router;
 import org.Edu.navigator.dto.request.CourseRequestDto;
+import org.Edu.navigator.dto.response.CourseResponseDto;
 import org.Edu.navigator.model.course.Course;
 import org.Edu.navigator.service.Impl.CourseServiceImpl;
 import org.springframework.http.ResponseEntity;
@@ -33,18 +34,18 @@ public class CourseController {
 
 
     @GetMapping(Router.GET_COURSE_BY_ID)
-    public ResponseEntity<Course> getById(@PathVariable Long id) {
+    public ResponseEntity<CourseResponseDto> getById(@PathVariable Long id) {
 
-        Course course = courseServiceImpl.getCourseById(id);
+        CourseResponseDto courseResponseDto = courseServiceImpl.getCourseById(id);
 
-        return ResponseEntity.ok(course);
+        return ResponseEntity.ok(courseResponseDto);
     }
 
 
     @GetMapping(Router.GET_ALL_COURSES)
-    public ResponseEntity<List<Course>> getAll() {
+    public ResponseEntity<List<CourseResponseDto>> getAll() {
 
-        List<Course> courses = courseServiceImpl.getAllCourses();
+        List<CourseResponseDto> courses = courseServiceImpl.getAllCourses();
 
         return ResponseEntity.ok(courses);
     }

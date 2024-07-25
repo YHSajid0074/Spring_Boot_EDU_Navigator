@@ -1,15 +1,16 @@
 package org.Edu.navigator.service;
 
 import org.Edu.navigator.dto.request.DirectorRequestDto;
+import org.Edu.navigator.dto.response.DirectorResponseDto;
 import org.Edu.navigator.model.director.Director;
 
 import java.util.List;
 
 public interface DirectorService {
 
-    List<Director> getAllDirectors();
+    List<DirectorResponseDto> getAllDirectors();
 
-    Director getDirectorById(Long id);
+    DirectorResponseDto getDirectorById(Long id);
 
     Director createDirector(DirectorRequestDto directorRequestDto);
 

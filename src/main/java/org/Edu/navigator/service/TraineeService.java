@@ -1,15 +1,16 @@
 package org.Edu.navigator.service;
 
 import org.Edu.navigator.dto.request.TraineeRequestDto;
+import org.Edu.navigator.dto.response.TraineeResponseDto;
 import org.Edu.navigator.model.trainee.Trainee;
 
 import java.util.List;
 
 public interface TraineeService {
 
-    public Trainee getTraineeById(Long id);
+    public TraineeResponseDto getTraineeById(Long id);
 
-    public List<Trainee> getAllTrainees();
+    public List<TraineeResponseDto> getAllTrainees();
 
     public Trainee createTrainee(TraineeRequestDto traineeRequestDto);
 

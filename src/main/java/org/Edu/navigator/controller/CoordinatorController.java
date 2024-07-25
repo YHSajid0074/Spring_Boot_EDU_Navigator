@@ -6,6 +6,7 @@ import org.Edu.navigator.common.constant.Message;
 import org.Edu.navigator.common.routes.ApiConstants;
 import org.Edu.navigator.common.routes.Router;
 import org.Edu.navigator.dto.request.CoordinatorRequestDto;
+import org.Edu.navigator.dto.response.CoordinatorResponseDto;
 import org.Edu.navigator.model.coordinator.Coordinator;
 import org.Edu.navigator.service.Impl.CoordinatorServiceImpl;
 import org.springframework.http.ResponseEntity;
@@ -33,7 +34,7 @@ public class CoordinatorController {
 
 
     @GetMapping(Router.GET_COORDINATOR_BY_ID)
-    public ResponseEntity<Coordinator> Get(@PathVariable Long id) {
+    public ResponseEntity<CoordinatorResponseDto> Get(@PathVariable Long id) {
 
         return ResponseEntity.ok(coordinatorServiceImpl.getCoordinator(id));
 
@@ -41,7 +42,7 @@ public class CoordinatorController {
 
 
     @GetMapping(Router.GET_ALL_COORDINATOR)
-    public ResponseEntity<List<Coordinator>> GetAll() {
+    public ResponseEntity<List<CoordinatorResponseDto>> GetAll() {
 
         return ResponseEntity.ok(coordinatorServiceImpl.GetAllCoordinator());
 

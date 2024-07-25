@@ -1,17 +1,18 @@
 package org.Edu.navigator.service;
 
 import org.Edu.navigator.dto.request.CourseRequestDto;
+import org.Edu.navigator.dto.response.CourseResponseDto;
 import org.Edu.navigator.model.course.Course;
 
 import java.util.List;
 
 public interface CourseService {
 
-    Course getCourseById(Long id);
+    CourseResponseDto getCourseById(Long id);
 
-    public List<Course> getAllCourses();
+    public List<CourseResponseDto> getAllCourses();
 
-    public Course getCourseByName(String courseName);
+    public CourseResponseDto getCourseByName(String courseName);
 
     Course createCourse(CourseRequestDto courseRequestDto);
 

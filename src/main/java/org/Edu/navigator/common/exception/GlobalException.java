@@ -29,7 +29,7 @@ public class GlobalException {
 
     @ExceptionHandler(Exception.class)
 
-    public ResponseEntity<ErrorDetails> handleException(Exception e, WebRequest webRequest) {
+    public ResponseEntity<ErrorDetails> InternalServerException (Exception e, WebRequest webRequest) {
 
         ErrorDetails errorDetails = new ErrorDetails(
                 LocalDateTime.now(),

@@ -2,12 +2,14 @@ package org.Edu.navigator.service.Impl;
 
 import org.Edu.navigator.dto.request.CoordinatorRequestDto;
 import org.Edu.navigator.common.exception.DuplicateEmailException;
+import org.Edu.navigator.dto.response.CoordinatorResponseDto;
 import org.Edu.navigator.model.coordinator.Coordinator;
 import org.Edu.navigator.repository.coordinator.CoordinatorRepositories;
 import org.Edu.navigator.service.CoordinatorService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CoordinatorServiceImpl implements CoordinatorService {
@@ -26,7 +28,7 @@ public class CoordinatorServiceImpl implements CoordinatorService {
     @Override
     public Coordinator createCoordinator(CoordinatorRequestDto coordinatorRequestDto) {
 
-        Coordinator email = coordinatorRepositories.findByEmail(coordinatorRequestDto.email());
+        Optional <Coordinator> email = coordinatorRepositories.findByEmail(coordinatorRequestDto.email());
 
         if (email == null) {
             throw new DuplicateEmailException("Email Already Exists");
@@ -46,19 +48,19 @@ public class CoordinatorServiceImpl implements CoordinatorService {
 
 
     @Override
-    public Coordinator getCoordinator(Long id) {
+    public CoordinatorResponseDto getCoordinator(Long id) {
 
-        Coordinator coordinator = coordinatorRepositories.findById(id).get();
+        CoordinatorResponseDto coordinatorResponseDto = coordinatorRepositories.findCoordinatorById(id);
 
-        return coordinator;
+        return coordinatorResponseDto;
 
     }
 
 
     @Override
-    public List<Coordinator> GetAllCoordinator() {
+    public List<CoordinatorResponseDto> GetAllCoordinator() {
 
-        List<Coordinator> coordinators = coordinatorRepositories.findAll();
+        List<CoordinatorResponseDto> coordinators = coordinatorRepositories.getAllCoordinator();
         return coordinators;
 
     }
@@ -67,7 +69,8 @@ public class CoordinatorServiceImpl implements CoordinatorService {
     @Override
     public Coordinator updateCoordinator(Long id, CoordinatorRequestDto coordinatorRequestDto) {
 
-        Coordinator email = coordinatorRepositories.findByEmail(coordinatorRequestDto.email());
+        Optional <Coordinator> email = coordinatorRepositories.findByEmail(coordinatorRequestDto.email());
+
         if (email == null) {
             throw new DuplicateEmailException("Email Already Exists");
         }

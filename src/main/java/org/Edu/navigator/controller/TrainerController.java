@@ -6,8 +6,8 @@ import org.Edu.navigator.common.constant.Message;
 import org.Edu.navigator.common.routes.ApiConstants;
 import org.Edu.navigator.common.routes.Router;
 import org.Edu.navigator.dto.request.TrainerRequestDto;
+import org.Edu.navigator.dto.response.TrainerResponseDto;
 import org.Edu.navigator.service.Impl.TrainerServiceImpl;
-import org.Edu.navigator.model.trainer.Trainer;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,9 +25,9 @@ public class TrainerController {
 
 
     @GetMapping(Router.GET_TRAINER_BY_ID)
-    public ResponseEntity<Trainer> getTrainerById(@PathVariable Long id) {
+    public ResponseEntity<TrainerResponseDto> getTrainerById(@PathVariable Long id) {
 
-        Trainer trainer = trainerServiceImpl.getTrainerById(id);
+        TrainerResponseDto trainer = trainerServiceImpl.getTrainerById(id);
 
         return ResponseEntity.ok(trainer);
 
@@ -63,9 +63,9 @@ public class TrainerController {
 
 
     @GetMapping(Router.GET_ALL_TRAINER)
-    public ResponseEntity<List<Trainer>> getAllTrainers() {
+    public ResponseEntity<List<TrainerResponseDto>> getAllTrainers() {
 
-        List<Trainer> trainers = trainerServiceImpl.getAllTrainers();
+        List<TrainerResponseDto> trainers = trainerServiceImpl.getAllTrainers();
 
         return ResponseEntity.ok(trainers);
 

@@ -1,6 +1,7 @@
 package org.Edu.navigator.service.Impl;
 
 import org.Edu.navigator.dto.request.CourseRequestDto;
+import org.Edu.navigator.dto.response.CourseResponseDto;
 import org.Edu.navigator.model.course.Course;
 import org.Edu.navigator.repository.course.CourseRepositories;
 import org.Edu.navigator.service.CourseService;
@@ -23,24 +24,24 @@ public class CourseServiceImpl implements CourseService {
 
 
     @Override
-    public Course getCourseById(Long id) {
+    public CourseResponseDto getCourseById(Long id) {
 
-      Course course=  courseRepositories.findById(id).get();
+      CourseResponseDto courseResponseDto=  courseRepositories.findCourseById(id);
 
-      return course;
+      return courseResponseDto;
     }
 
 
     @Override
-    public List<Course> getAllCourses() {
+    public List<CourseResponseDto> getAllCourses() {
 
-        return courseRepositories.findAll();
+        return courseRepositories.getAllCourse();
 
     }
 
 
     @Override
-    public Course getCourseByName(String courseName) {
+    public CourseResponseDto getCourseByName(String courseName) {
         return null;
     }
 

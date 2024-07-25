@@ -6,6 +6,7 @@ import org.Edu.navigator.common.constant.Message;
 import org.Edu.navigator.common.routes.ApiConstants;
 import org.Edu.navigator.common.routes.Router;
 import org.Edu.navigator.dto.request.DirectorRequestDto;
+import org.Edu.navigator.dto.response.DirectorResponseDto;
 import org.Edu.navigator.model.director.Director;
 import org.Edu.navigator.service.Impl.DirectorServiceImpl;
 import org.springframework.http.ResponseEntity;
@@ -35,19 +36,19 @@ public class DirectorController {
 
 
     @GetMapping(Router.GET_DIRECTOR_BY_ID)
-    public ResponseEntity<Director> getById(@PathVariable Long id) {
+    public ResponseEntity<DirectorResponseDto> getById(@PathVariable Long id) {
 
-        Director director = directorServiceImpl.getDirectorById(id);
+        DirectorResponseDto directorResponseDto = directorServiceImpl.getDirectorById(id);
 
-        return ResponseEntity.ok(director);
+        return ResponseEntity.ok(directorResponseDto);
 
     }
 
 
     @GetMapping(Router.GET_ALL_DIRECTOR)
-    public ResponseEntity<List<Director>> getAll() {
+    public ResponseEntity<List<DirectorResponseDto>> getAll() {
 
-        List<Director> directors = directorServiceImpl.getAllDirectors();
+        List<DirectorResponseDto> directors = directorServiceImpl.getAllDirectors();
 
         return ResponseEntity.ok(directors);
     }

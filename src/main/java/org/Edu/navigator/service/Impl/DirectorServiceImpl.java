@@ -1,6 +1,7 @@
 package org.Edu.navigator.service.Impl;
 
 import org.Edu.navigator.dto.request.DirectorRequestDto;
+import org.Edu.navigator.dto.response.DirectorResponseDto;
 import org.Edu.navigator.model.director.Director;
 import org.Edu.navigator.repository.director.DirectorRepositories;
 import org.Edu.navigator.service.DirectorService;
@@ -35,17 +36,17 @@ public class DirectorServiceImpl implements DirectorService {
 
 
     @Override
-    public List<Director> getAllDirectors() {
+    public List<DirectorResponseDto> getAllDirectors() {
 
-        return directorRepositories.findAll();
+        return directorRepositories.getAllDirector();
 
     }
 
 
     @Override
-    public Director getDirectorById(Long id) {
+    public DirectorResponseDto getDirectorById(Long id) {
 
-        return directorRepositories.getById(id);
+        return directorRepositories.findDirectorById(id);
 
     }
 

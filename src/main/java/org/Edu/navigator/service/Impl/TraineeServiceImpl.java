@@ -2,6 +2,7 @@ package org.Edu.navigator.service.Impl;
 
 import org.Edu.navigator.dto.request.TraineeRequestDto;
 import org.Edu.navigator.common.exception.DuplicateEmailException;
+import org.Edu.navigator.dto.response.TraineeResponseDto;
 import org.Edu.navigator.model.trainee.Trainee;
 import org.Edu.navigator.repository.trainee.TraineeRepositories;
 import org.Edu.navigator.service.TraineeService;
@@ -23,17 +24,17 @@ public class TraineeServiceImpl implements TraineeService {
 
 
     @Override
-    public List<Trainee> getAllTrainees() {
+    public List<TraineeResponseDto> getAllTrainees() {
 
-        return traineeRepositories.findAll();
+        return traineeRepositories.getAllTrainee();
 
     }
 
 
     @Override
-    public Trainee getTraineeById(Long id) {
+    public TraineeResponseDto getTraineeById(Long id) {
 
-        return traineeRepositories.findById(id).get();
+        return traineeRepositories.findTraineeById(id);
 
     }
 

@@ -6,6 +6,7 @@ import org.Edu.navigator.common.constant.Message;
 import org.Edu.navigator.common.routes.ApiConstants;
 import org.Edu.navigator.common.routes.Router;
 import org.Edu.navigator.dto.request.TraineeRequestDto;
+import org.Edu.navigator.dto.response.TraineeResponseDto;
 import org.Edu.navigator.service.Impl.TraineeServiceImpl;
 import org.Edu.navigator.model.trainee.Trainee;
 import org.springframework.http.ResponseEntity;
@@ -58,17 +59,17 @@ public class TraineeController {
 
 
     @GetMapping(Router.GET_TRAINEE_BY_ID)
-    public ResponseEntity<Trainee> getTraineeById(@PathVariable Long id) {
+    public ResponseEntity<TraineeResponseDto> getTraineeById(@PathVariable Long id) {
 
-        Trainee trainee = traineeServiceImpl.getTraineeById(id);
+        TraineeResponseDto traineeResponseDto = traineeServiceImpl.getTraineeById(id);
 
-        return ResponseEntity.ok(trainee);
+        return ResponseEntity.ok(traineeResponseDto);
 
     }
 
 
     @GetMapping(Router.GET_ALL_TRAINEE)
-    public ResponseEntity<List<Trainee>> getAllTrainee() {
+    public ResponseEntity<List<TraineeResponseDto>> getAllTrainee() {
 
         return ResponseEntity.ok(traineeServiceImpl.getAllTrainees());
 
