@@ -1,4 +1,4 @@
-package org.Edu.navigator.config.Authentication.Jwt;
+package org.Edu.navigator.Authentication.Jwt;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

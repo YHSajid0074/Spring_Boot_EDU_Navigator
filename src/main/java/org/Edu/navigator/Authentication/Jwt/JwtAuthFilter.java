@@ -1,4 +1,4 @@
-package org.Edu.navigator.config.Authentication.Jwt;
+package org.Edu.navigator.Authentication.Jwt;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

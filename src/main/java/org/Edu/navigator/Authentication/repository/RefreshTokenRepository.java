@@ -1,6 +1,6 @@
-package org.Edu.navigator.config.Authentication.repository;
+package org.Edu.navigator.Authentication.repository;
 
-import org.Edu.navigator.config.Authentication.model.RefreshToken;
+import org.Edu.navigator.Authentication.model.RefreshToken;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

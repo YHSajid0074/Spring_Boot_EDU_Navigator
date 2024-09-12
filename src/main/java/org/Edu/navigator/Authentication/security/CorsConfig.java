@@ -1,4 +1,4 @@
-package org.Edu.navigator.config.Authentication.security;
+package org.Edu.navigator.Authentication.security;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.cors.CorsConfiguration;

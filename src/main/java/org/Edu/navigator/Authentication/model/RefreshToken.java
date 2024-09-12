@@ -1,4 +1,4 @@
-package org.Edu.navigator.config.Authentication.model;
+package org.Edu.navigator.Authentication.model;
 
 
 import jakarta.persistence.*;
