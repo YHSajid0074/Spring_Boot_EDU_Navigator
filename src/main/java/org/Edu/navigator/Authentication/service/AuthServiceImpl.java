@@ -85,7 +85,7 @@ public class AuthServiceImpl implements AuthService {
 //            throw new RmsServerException();
 //        }
 
-        return JwtResponse.builder()
+        return JwtResponse.builde m()
                 .token(jwtToken)
                 .refreshToken(refreshToken.getRefreshToken())
                 .roleName(userDetails.getRole())
