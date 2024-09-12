@@ -15,7 +15,7 @@ import org.Edu.navigator.model.trainee.Trainee;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Course implements Serializable {
+public class User implements Serializable {
 
     private static final long serialVersionUID = 139L;
 
@@ -28,6 +28,6 @@ public class Course implements Serializable {
     @Column(nullable = false)
     private Integer duration;
 
-    @ManyToMany(mappedBy = "courses")
+    @ManyToMany(mappedBy = "cours")
     Set<Trainee> trainee;
 }

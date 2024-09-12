@@ -1,6 +1,8 @@
 package org.Edu.navigator.Authentication.security;
 
 import lombok.RequiredArgsConstructor;
+import org.Edu.navigator.Authentication.Jwt.JwtAuthFilter;
+import org.Edu.navigator.Authentication.service.CustomAccessDeniedHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -39,7 +41,7 @@ public class SecurityConfig {
                 // disabling csrf since we won't use form login
                 .csrf(AbstractHttpConfigurer::disable)
                 // giving every permission to every request for public endpoint
-                .authorizeHttpRequests(request -> request.requestMatchers(ApiConstants.PUBLIC_ENDPOINTS)
+                .authorizeHttpRequests(request -> request.requestMatchers("PUBLIC_ENDPOINTS")
                         .permitAll().anyRequest().authenticated())
                 // setting custom access denied handler for not authorized request
                 .exceptionHandling(exception -> exception.accessDeniedHandler(accessDeniedHandler))

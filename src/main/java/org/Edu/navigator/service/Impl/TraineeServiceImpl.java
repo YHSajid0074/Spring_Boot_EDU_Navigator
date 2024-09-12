@@ -53,7 +53,7 @@ public class TraineeServiceImpl implements TraineeService {
         trainee.setUsername(traineeRequestDto.username());
         trainee.setFullName(traineeRequestDto.fullName());
         trainee.setTrainer(traineeRequestDto.trainer());
-        trainee.setCourses(traineeRequestDto.courses());
+        trainee.setCours(traineeRequestDto.cours());
 
         return traineeRepositories.save(trainee);
 
@@ -71,7 +71,7 @@ public class TraineeServiceImpl implements TraineeService {
         Trainee trainee = traineeRepositories.findById(id).get();
 
         trainee.setFullName(traineeRequestDto.fullName());
-        trainee.setCourses(traineeRequestDto.courses());
+        trainee.setCours(traineeRequestDto.cours());
         trainee.setTrainer(traineeRequestDto.trainer());
         trainee.setEmail(traineeRequestDto.email());
         trainee.setUsername(traineeRequestDto.username());

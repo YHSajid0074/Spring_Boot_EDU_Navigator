@@ -11,10 +11,10 @@ public class Router {
     public static final String GET_ALL_COORDINATOR="/get-all-coordinator";
 
 
-    //Course
+    //User
     public static final String COURSE=ApiConstants.BASE_URL_V1 + "/course";
     public static final String CREATE_COURSE="/create-course";
-    public static final String GET_ALL_COURSES="/get-all-courses";
+    public static final String GET_ALL_COURSES="/get-all-cours";
     public static final String GET_COURSE_BY_ID="/get-course"+"/{id}";
     public static final String UPDATE_COURSE="/update-course";
     public static final String DELETE_COURSE="/delete-course"+"/{id}";

@@ -4,7 +4,7 @@ import org.Edu.navigator.model.trainee.Trainee;
 
 import java.util.Set;
 
-public record CourseRequestDto(
+public record UserRequestDto(
 
       Long id,
       String name,
