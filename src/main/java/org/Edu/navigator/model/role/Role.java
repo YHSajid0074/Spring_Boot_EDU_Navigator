@@ -21,7 +21,7 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@SuperBuilder
+//@SuperBuilder
 @SQLRestriction( "is_active = TRUE" )
 @SQLDelete( sql = "UPDATE role SET is_active = FALSE WHERE id = ?" )
 @Entity

@@ -24,6 +24,8 @@ public interface RoleRepo extends JpaRepository<Role, Long > {
             """ )
     Page<CustomRoleResponseDTO> findAllRoles(Pageable pageable );
 
+    @EntityGraph( attributePaths = { "users" } )
+    Set< Role > findAllByIdIn( Set< Long > ids );
 
     CustomRoleResponseDTO findRoleById(Long id);
 }
