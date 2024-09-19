@@ -1,4 +1,4 @@
-package org.Edu.navigator.common.Swagger;
+package org.Edu.navigator.Config.swagger;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
@@ -45,7 +45,7 @@ public class OpenAPIConfig {
 //        devServer.setDescription("Server URL in Development environment");
 
         Contact contact = new Contact();
-//        contact.setEmail("arman.reza@technonext.com");
+//        contact.setEmail("yeamim.hossain@technonext.com");
 //        contact.setName("TechnoNext Ltd");
 //        contact.setUrl("https://www.technonext.com");
 
