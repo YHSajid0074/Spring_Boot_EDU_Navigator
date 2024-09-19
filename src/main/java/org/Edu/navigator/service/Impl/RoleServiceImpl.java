@@ -21,9 +21,9 @@ public class RoleServiceImpl  {
     private final RoleRepo roleRepository;
 
     public void create( RoleRequestDTO requestDto ) {
-        RoleRequestDTO cleanedRoleRequestDTOFields = cleanDTOFields( requestDto );
-        validate( cleanedRoleRequestDTOFields, null );
-        roleRepository.save( toEntityConverter( cleanedRoleRequestDTOFields, null ) );
+       Role role = new Role();
+       role.setRoleType(requestDto.roleType());
+       roleRepository.save(role);
     }
 
 
