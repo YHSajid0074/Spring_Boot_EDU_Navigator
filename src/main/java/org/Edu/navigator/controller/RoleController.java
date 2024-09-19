@@ -19,7 +19,7 @@ public class RoleController  {
     @PostMapping()
     public ResponseEntity<String> create(RoleRequestDTO requestDto ) {
         roleService.create( requestDto );
-        return new ResponseEntity<>( HttpStatus.CREATED );
+        return  ResponseEntity.ok( "Created" );
     }
 
 

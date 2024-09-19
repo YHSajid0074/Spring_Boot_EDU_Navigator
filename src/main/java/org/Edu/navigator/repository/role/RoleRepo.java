@@ -28,4 +28,6 @@ public interface RoleRepo extends JpaRepository<Role, Long > {
     Set< Role > findAllByIdIn( Set< Long > ids );
 
     CustomRoleResponseDTO findRoleById(Long id);
+
+
 }

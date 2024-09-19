@@ -22,6 +22,7 @@ public class RoleServiceImpl  {
 
     public void create( RoleRequestDTO requestDto ) {
        Role role = new Role();
+       role.setId(requestDto.id());
        role.setRoleType(requestDto.roleType());
        roleRepository.save(role);
     }

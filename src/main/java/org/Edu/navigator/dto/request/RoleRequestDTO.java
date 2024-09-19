@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 public record RoleRequestDTO(
         Long id,
-        @NotNull String roleType
+        String roleType
 
 )
         implements Serializable {
