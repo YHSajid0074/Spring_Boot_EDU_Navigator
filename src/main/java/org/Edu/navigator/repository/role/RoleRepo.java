@@ -25,5 +25,5 @@ public interface RoleRepo extends JpaRepository<Role, Long > {
     Page<CustomRoleResponseDTO> findAllRoles(Pageable pageable );
 
 
-
+    CustomRoleResponseDTO findRoleById(Long id);
 }

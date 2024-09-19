@@ -1,5 +1,6 @@
 package org.Edu.navigator.dto.response;
 
+import java.net.http.HttpResponse;
 import java.util.Set;
 
 public interface CustomRoleResponseDTO {
