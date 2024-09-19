@@ -1,7 +1,7 @@
 package org.Edu.navigator.service.Impl;
 
-import org.Edu.navigator.dto.request.UserRequestDto;
-import org.Edu.navigator.dto.response.UserResponseDto;
+import org.Edu.navigator.dto.request.CourseRequestDto;
+import org.Edu.navigator.dto.response.CourseResponseDto;
 import org.Edu.navigator.model.course.Course;
 import org.Edu.navigator.repository.course.CourseRepo;
 import org.Edu.navigator.service.CourseService;
@@ -24,16 +24,16 @@ public class CourseServiceImpl implements CourseService {
 
 
     @Override
-    public UserResponseDto getCourseById(Long id) {
+    public CourseResponseDto getCourseById(Long id) {
 
-      UserResponseDto userResponseDto =  courseRepositories.findCourseById(id);
+      CourseResponseDto courseResponseDto =  courseRepositories.findCourseById(id);
 
-      return userResponseDto;
+      return courseResponseDto;
     }
 
 
     @Override
-    public List<UserResponseDto> getAllCourses() {
+    public List<CourseResponseDto> getAllCourses() {
 
         return courseRepositories.getAllCourse();
 
@@ -41,32 +41,32 @@ public class CourseServiceImpl implements CourseService {
 
 
     @Override
-    public UserResponseDto getCourseByName(String courseName) {
+    public CourseResponseDto getCourseByName(String courseName) {
         return null;
     }
 
 
     @Override
-    public Course createCourse(UserRequestDto userRequestDto) {
+    public Course createCourse(CourseRequestDto courseRequestDto) {
 
         Course course = new Course();
 
-        course.setDuration(userRequestDto.duration());
-        course.setName(userRequestDto.name());
-        course.setTrainee(userRequestDto.trainee());
+        course.setDuration(courseRequestDto.duration());
+        course.setName(courseRequestDto.name());
+        course.setTrainee(courseRequestDto.trainee());
 
         return courseRepositories.save(course);
     }
 
 
     @Override
-    public Course updateCourse(Long id, UserRequestDto userRequestDto) {
+    public Course updateCourse(Long id, CourseRequestDto courseRequestDto) {
 
      Course course =courseRepositories.findById(id).get();
 
-     course.setName(userRequestDto.name());
-     course.setTrainee(userRequestDto.trainee());
-     course.setDuration(userRequestDto.duration());
+     course.setName(courseRequestDto.name());
+     course.setTrainee(courseRequestDto.trainee());
+     course.setDuration(courseRequestDto.duration());
 
      return courseRepositories.save(course);
     }

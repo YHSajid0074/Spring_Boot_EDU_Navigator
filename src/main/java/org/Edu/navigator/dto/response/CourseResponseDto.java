@@ -1,6 +1,6 @@
 package org.Edu.navigator.dto.response;
 
-public interface UserResponseDto {
+public interface CourseResponseDto {
 
     Long getId();
     String getName();

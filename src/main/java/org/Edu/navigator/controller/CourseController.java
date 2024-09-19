@@ -5,8 +5,8 @@ import lombok.RequiredArgsConstructor;
 import org.Edu.navigator.common.constant.Message;
 import org.Edu.navigator.common.routes.ApiConstants;
 import org.Edu.navigator.common.routes.Router;
-import org.Edu.navigator.dto.request.UserRequestDto;
-import org.Edu.navigator.dto.response.UserResponseDto;
+import org.Edu.navigator.dto.request.CourseRequestDto;
+import org.Edu.navigator.dto.response.CourseResponseDto;
 import org.Edu.navigator.service.Impl.CourseServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,27 +24,27 @@ public class CourseController {
 
 
     @PostMapping(Router.CREATE_COURSE)
-    public ResponseEntity<String> create(@RequestBody UserRequestDto userRequestDto) {
+    public ResponseEntity<String> create(@RequestBody CourseRequestDto courseRequestDto) {
 
-        courseServiceImpl.createCourse(userRequestDto);
+        courseServiceImpl.createCourse(courseRequestDto);
 
         return ResponseEntity.ok(Message.CREATED_SUCCESSFULLY);
     }
 
 
     @GetMapping(Router.GET_COURSE_BY_ID)
-    public ResponseEntity<UserResponseDto> getById(@PathVariable Long id) {
+    public ResponseEntity<CourseResponseDto> getById(@PathVariable Long id) {
 
-        UserResponseDto userResponseDto = courseServiceImpl.getCourseById(id);
+        CourseResponseDto courseResponseDto = courseServiceImpl.getCourseById(id);
 
-        return ResponseEntity.ok(userResponseDto);
+        return ResponseEntity.ok(courseResponseDto);
     }
 
 
     @GetMapping(Router.GET_ALL_COURSES)
-    public ResponseEntity<List<UserResponseDto>> getAll() {
+    public ResponseEntity<List<CourseResponseDto>> getAll() {
 
-        List<UserResponseDto> courses = courseServiceImpl.getAllCourses();
+        List<CourseResponseDto> courses = courseServiceImpl.getAllCourses();
 
         return ResponseEntity.ok(courses);
     }
