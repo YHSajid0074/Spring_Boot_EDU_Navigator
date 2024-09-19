@@ -7,7 +7,7 @@ import org.Edu.navigator.common.routes.ApiConstants;
 import org.Edu.navigator.common.routes.Router;
 import org.Edu.navigator.dto.request.UserRequestDto;
 import org.Edu.navigator.dto.response.UserResponseDto;
-import org.Edu.navigator.service.Impl.UserServiceImpl;
+import org.Edu.navigator.service.Impl.CourseServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,10 +17,10 @@ import java.util.List;
 @RestController
 @RequestMapping(path= Router.COURSE)
 @Tag(name= ApiConstants.COURSE)
-public class UserController {
+public class CourseController {
 
 
-    public final UserServiceImpl courseServiceImpl;
+    public final CourseServiceImpl courseServiceImpl;
 
 
     @PostMapping(Router.CREATE_COURSE)

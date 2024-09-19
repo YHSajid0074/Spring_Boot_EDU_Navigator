@@ -15,7 +15,7 @@ import org.Edu.navigator.model.trainee.Trainee;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class User implements Serializable {
+public class Course implements Serializable {
 
     private static final long serialVersionUID = 139L;
 

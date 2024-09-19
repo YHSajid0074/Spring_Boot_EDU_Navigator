@@ -1,18 +1,18 @@
-package org.Edu.navigator.repository.user;
+package org.Edu.navigator.repository.course;
 
 import org.Edu.navigator.dto.response.UserResponseDto;
-import org.Edu.navigator.model.user.User;
+import org.Edu.navigator.model.course.Course;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface UserRepositories extends JpaRepository<User, Long> {
+public interface CourseRepo extends JpaRepository<Course, Long> {
 
     @Query("""
           SELECT c
-            FROM User c
+            FROM Course c
           """
     )
     List<UserResponseDto> getAllCourse();
@@ -20,7 +20,7 @@ public interface UserRepositories extends JpaRepository<User, Long> {
 
     @Query("""
             SELECT c 
-               FROM User c 
+               FROM Course c 
                   WHERE c.id=:id
                   """
     )

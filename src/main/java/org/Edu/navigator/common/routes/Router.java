@@ -11,7 +11,7 @@ public class Router {
     public static final String GET_ALL_COORDINATOR="/get-all-coordinator";
 
 
-    //User
+    //Course
     public static final String COURSE=ApiConstants.BASE_URL_V1 + "/course";
     public static final String CREATE_COURSE="/create-course";
     public static final String GET_ALL_COURSES="/get-all-cours";

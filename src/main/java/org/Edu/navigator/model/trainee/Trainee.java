@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.Edu.navigator.model.trainer.Trainer;
 import org.Edu.navigator.model.baseEntity.BaseEntity;
-import org.Edu.navigator.model.course.User;
+import org.Edu.navigator.model.course.Course;
 
 @Getter
 @Setter
@@ -22,5 +22,5 @@ public class Trainee extends BaseEntity {
     Trainer trainer;
 
     @ManyToMany
-    Set<User> cours;
+    Set<Course> cours;
 }
