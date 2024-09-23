@@ -19,11 +19,15 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 //@SuperBuilder
-@SQLRestriction( "is_active = TRUE" )
+//@SQLRestriction( "is_active = TRUE" )
 @SQLDelete( sql = "UPDATE _user SET is_active = FALSE WHERE id = ?" )
 @Entity
 @Table( name = "_user" )
-public class User extends BaseEntity {
+public class User  {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column( nullable = false )
     private String username;

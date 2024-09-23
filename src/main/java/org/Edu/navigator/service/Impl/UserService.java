@@ -22,16 +22,15 @@ import java.util.Set;
 @RequiredArgsConstructor
 public class UserService  {
     private final UserRepo userRepository;
-   // private final PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
     private final RoleRepo roleRepository;
 
 
     public void create( UserRequestDTO requestDto ) {
         User user = new User();
-        user.setId( requestDto.id() );
         user.setUsername( requestDto.username() );
         user.setEmail( requestDto.email() );
-        user.setPassword( requestDto.password() );
+        user.setPassword( passwordEncoder.encode(requestDto.password() ));
         userRepository.save( user );
     }
 

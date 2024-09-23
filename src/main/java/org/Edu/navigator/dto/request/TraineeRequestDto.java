@@ -10,8 +10,8 @@ public record TraineeRequestDto(
         String fullName,
         String username,
         String email,
-        Trainer trainer,
-        Set<Course> cours
+        Long trainerId,
+        Set<Long> course
 
 ) {
 }

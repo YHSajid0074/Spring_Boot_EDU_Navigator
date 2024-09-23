@@ -22,5 +22,5 @@ public class Trainee extends BaseEntity {
     Trainer trainer;
 
     @ManyToMany
-    Set<Course> cours;
+    Set<Course> course;
 }

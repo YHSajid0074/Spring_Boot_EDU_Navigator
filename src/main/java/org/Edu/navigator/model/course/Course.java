@@ -28,6 +28,6 @@ public class Course implements Serializable {
     @Column(nullable = false)
     private Integer duration;
 
-    @ManyToMany(mappedBy = "cours")
+    @ManyToMany(mappedBy = "course")
     Set<Trainee> trainee;
 }

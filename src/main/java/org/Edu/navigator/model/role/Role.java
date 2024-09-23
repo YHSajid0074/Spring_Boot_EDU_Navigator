@@ -1,9 +1,6 @@
 package org.Edu.navigator.model.role;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,10 +19,15 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 //@SuperBuilder
-@SQLRestriction( "is_active = TRUE" )
+//@SQLRestriction( "is_active = TRUE" )
 @SQLDelete( sql = "UPDATE role SET is_active = FALSE WHERE id = ?" )
 @Entity
-public class Role extends BaseEntity {
+public class Role {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @Column( nullable = false )
     private String roleType = "USER";
 

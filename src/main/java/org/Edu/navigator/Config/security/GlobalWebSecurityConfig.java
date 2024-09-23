@@ -47,6 +47,10 @@ public class GlobalWebSecurityConfig {
                                     "/configuration/security",
                                     "/swagger-ui/**",
                                     "/webjars/**",
+                                    "/User",
+                                    "/User/",
+                                    "/User/change-roles",
+                                    "/Role",
                                     "/swagger-ui.html"
                             )
                             .permitAll()

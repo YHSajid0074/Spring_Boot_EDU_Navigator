@@ -6,7 +6,6 @@ import jakarta.validation.constraints.NotNull;
 import java.io.Serializable;
 
 public record RoleRequestDTO(
-        Long id,
         String roleType
 
 )
