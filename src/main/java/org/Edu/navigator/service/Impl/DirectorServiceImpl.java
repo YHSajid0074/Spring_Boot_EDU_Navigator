@@ -3,6 +3,7 @@ package org.Edu.navigator.service.Impl;
 import org.Edu.navigator.dto.request.DirectorRequestDto;
 import org.Edu.navigator.dto.response.DirectorResponseDto;
 import org.Edu.navigator.model.director.Director;
+import org.Edu.navigator.repository.coordinator.CoordinatorRepositories;
 import org.Edu.navigator.repository.director.DirectorRepositories;
 import org.Edu.navigator.service.DirectorService;
 import org.springframework.dao.DuplicateKeyException;
@@ -15,10 +16,10 @@ import java.util.List;
 public class DirectorServiceImpl implements DirectorService {
 
     DirectorRepositories directorRepositories;
+    CoordinatorRepositories coordinatorRepositories;
 
-
-    public DirectorServiceImpl(DirectorRepositories directorRepositories) {
-
+    public DirectorServiceImpl(DirectorRepositories directorRepositories,CoordinatorRepositories coordinatorRepositories) {
+        this.coordinatorRepositories = coordinatorRepositories;
         this.directorRepositories = directorRepositories;
 
     }
@@ -26,7 +27,7 @@ public class DirectorServiceImpl implements DirectorService {
 
     public Director convertToEntity(Director director, DirectorRequestDto directorRequestDto) {
 
-        director.setCoordinators(directorRequestDto.coordinators());
+        director.setCoordinators(coordinatorRepositories.getCoordinatorByIdIsIn(directorRequestDto.coordinators()));
         director.setEmail(directorRequestDto.email());
         director.setUsername(directorRequestDto.username());
         director.setFullName(directorRequestDto.fullName());

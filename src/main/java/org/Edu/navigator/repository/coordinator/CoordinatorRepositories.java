@@ -2,6 +2,7 @@ package org.Edu.navigator.repository.coordinator;
 
 import org.Edu.navigator.dto.response.CoordinatorResponseDto;
 import org.Edu.navigator.model.coordinator.Coordinator;
+import org.Edu.navigator.model.trainer.Trainer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Repository
 public interface CoordinatorRepositories extends JpaRepository<Coordinator, Long> {
@@ -41,5 +43,7 @@ FROM Coordinator c
 where c.id=id
 """)
      CoordinatorResponseDto findCoordinatorById(@Param("id") Long id);
+
+    Set<Coordinator> getCoordinatorByIdIsIn(Set<Long> ids);
 
 }

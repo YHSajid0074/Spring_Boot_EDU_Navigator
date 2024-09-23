@@ -9,7 +9,7 @@ public record DirectorRequestDto(
         String fullName,
         String username,
         String email,
-        Set<Coordinator> coordinators
+        Set<Long> coordinators
 
 ) {
 }
