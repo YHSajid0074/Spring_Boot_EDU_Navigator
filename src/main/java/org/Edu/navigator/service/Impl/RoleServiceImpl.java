@@ -18,7 +18,7 @@ import java.util.Objects;
 @RequiredArgsConstructor
 public class RoleServiceImpl  {
 
-    private final RoleRepo roleRepository;
+    private  final RoleRepo roleRepository;
 
     public void create( RoleRequestDTO requestDto ) {
        Role role = new Role();
