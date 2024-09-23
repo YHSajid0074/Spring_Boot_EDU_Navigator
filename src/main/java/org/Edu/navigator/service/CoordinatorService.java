@@ -13,7 +13,7 @@ public interface CoordinatorService {
 
     Coordinator createCoordinator(CoordinatorRequestDto coordinatorRequestDto);
 
-    CoordinatorResponseDto getCoordinator(Long id);
+    CoordinatorResponseDto getCoordinatorById(Long id);
 
     List<CoordinatorResponseDto >GetAllCoordinator();
 

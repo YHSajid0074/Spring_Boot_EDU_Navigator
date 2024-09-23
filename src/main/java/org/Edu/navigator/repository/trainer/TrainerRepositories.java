@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Set;
 
 public interface TrainerRepositories extends JpaRepository<Trainer, Long> {
 
@@ -28,7 +29,18 @@ public interface TrainerRepositories extends JpaRepository<Trainer, Long> {
                   WHERE t.id=:id
                   """
      )
-     public TrainerResponseDto findTrainerById(@Param("id") Long id);
+      TrainerResponseDto findTrainerById(@Param("id") Long id);
 
+
+     @Query("""
+            SELECT t
+               FROM Trainer t
+                  WHERE t.id=:id
+                  """
+     )
+      Trainer getTrainerById(@Param("id") Long id);
+
+
+     Set<Trainer> getTrainerByIdIsIn(Set<Long> ids);
 
 }

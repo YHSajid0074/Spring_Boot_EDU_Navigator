@@ -60,13 +60,8 @@ public class JWTFilter extends OncePerRequestFilter {
         filterChain.doFilter( request, response );
     }
 
-//    @Override
-//    protected boolean shouldNotFilter( @NotNull HttpServletRequest request ) throws ServletException {
-//        return (
-//                request.getRequestURI().contains( UserRoutes.USER_ROUTE + "/" + UserRoutes.USER_REGISTRATION )
-//                        || request.getRequestURI().contains(
-//                        AuthenticationRoutes.AUTHENTICATION + "/" + AuthenticationRoutes.AUTHENTICATION_LOGIN
-//                )
-//        );
-//    }
+    @Override
+    protected boolean shouldNotFilter( @NotNull HttpServletRequest request ) throws ServletException {
+        return true ;
+    }
 }

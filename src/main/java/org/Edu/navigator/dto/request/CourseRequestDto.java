@@ -9,7 +9,7 @@ public record CourseRequestDto(
       Long id,
       String name,
       Integer duration,
-      Set<Trainee> trainee
+      Set<Long> trainee
 
 ) {
 }

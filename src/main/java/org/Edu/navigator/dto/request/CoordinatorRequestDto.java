@@ -6,12 +6,11 @@ import org.Edu.navigator.model.trainer.Trainer;
 import java.util.Set;
 
 public record CoordinatorRequestDto(
-
+        Long DirectorId,
         String fullName,
         String username,
         String email,
-        Director director,
-        Set<Trainer> trainers
+        Set<Long> trainersId
 
 ) {
 }

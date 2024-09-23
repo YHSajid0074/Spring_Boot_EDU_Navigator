@@ -29,4 +29,12 @@ public Director findByEmail(String email);
     )
     public DirectorResponseDto findDirectorById(@Param("id") Long id);
 
+    @Query("""
+            SELECT d
+               FROM Director d
+                  WHERE d.id=:id
+                  """
+    )
+    public Director getDirectorById(@Param("id") Long id);
+
 }

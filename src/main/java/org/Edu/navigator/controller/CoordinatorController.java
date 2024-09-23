@@ -36,7 +36,7 @@ public class CoordinatorController {
     @GetMapping(Router.GET_COORDINATOR_BY_ID)
     public ResponseEntity<CoordinatorResponseDto> Get(@PathVariable Long id) {
 
-        return ResponseEntity.ok(coordinatorServiceImpl.getCoordinator(id));
+        return ResponseEntity.ok(coordinatorServiceImpl.getCoordinatorById(id));
 
     }
 

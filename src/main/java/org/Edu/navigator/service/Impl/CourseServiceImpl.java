@@ -2,8 +2,10 @@ package org.Edu.navigator.service.Impl;
 
 import org.Edu.navigator.dto.request.CourseRequestDto;
 import org.Edu.navigator.dto.response.CourseResponseDto;
+import org.Edu.navigator.dto.response.TrainerResponseDto;
 import org.Edu.navigator.model.course.Course;
 import org.Edu.navigator.repository.course.CourseRepo;
+import org.Edu.navigator.repository.trainee.TraineeRepositories;
 import org.Edu.navigator.service.CourseService;
 import org.springframework.stereotype.Service;
 
@@ -13,12 +15,14 @@ import java.util.List;
 @Service
 public class CourseServiceImpl implements CourseService {
 
-    private final CourseRepo courseRepositories;
+    CourseRepo courseRepositories;
+    TraineeRepositories traineeRepositories;
 
 
-    public CourseServiceImpl(CourseRepo courseRepositories) {
+    public CourseServiceImpl(CourseRepo courseRepositories,TraineeRepositories traineeRepositories) {
 
         this.courseRepositories = courseRepositories;
+        this.traineeRepositories = traineeRepositories;
 
     }
 
@@ -53,7 +57,7 @@ public class CourseServiceImpl implements CourseService {
 
         course.setDuration(courseRequestDto.duration());
         course.setName(courseRequestDto.name());
-        course.setTrainee(courseRequestDto.trainee());
+        course.setTrainee(traineeRepositories.getTraineeByIdIsIn(courseRequestDto.trainee()));
 
         return courseRepositories.save(course);
     }
@@ -65,7 +69,7 @@ public class CourseServiceImpl implements CourseService {
      Course course =courseRepositories.findById(id).get();
 
      course.setName(courseRequestDto.name());
-     course.setTrainee(courseRequestDto.trainee());
+     course.setTrainee(traineeRepositories.getTraineeByIdIsIn(courseRequestDto.trainee()));
      course.setDuration(courseRequestDto.duration());
 
      return courseRepositories.save(course);
