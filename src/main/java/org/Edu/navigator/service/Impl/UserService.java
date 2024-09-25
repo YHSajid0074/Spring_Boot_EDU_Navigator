@@ -6,6 +6,7 @@ import org.Edu.navigator.dto.request.UserRolesRequestDTO;
 import org.Edu.navigator.dto.response.CustomUserResponseDTO;
 import org.Edu.navigator.model.role.Role;
 import org.Edu.navigator.model.user.User;
+import org.Edu.navigator.notification.SSEService;
 import org.Edu.navigator.repository.role.RoleRepo;
 import org.Edu.navigator.repository.user.UserRepo;
 import org.springframework.data.domain.Page;
@@ -24,6 +25,7 @@ public class UserService  {
     private final UserRepo userRepository;
     private final PasswordEncoder passwordEncoder;
     private final RoleRepo roleRepository;
+    private final SSEService<User> userSSEService;
 
 
     public void create( UserRequestDTO requestDto ) {
@@ -32,6 +34,8 @@ public class UserService  {
         user.setEmail( requestDto.email() );
         user.setPassword( passwordEncoder.encode(requestDto.password() ));
         userRepository.save( user );
+        userSSEService.emit( user );
+
     }
 
     public User readOne(Long id ) {

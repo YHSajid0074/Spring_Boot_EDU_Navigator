@@ -51,11 +51,13 @@ public class GlobalWebSecurityConfig {
                                     "/User/",
                                     "/User/change-roles",
                                     "/Role",
+                                    "/Role/",
                                     "/swagger-ui.html"
                             )
                             .permitAll()
                             .anyRequest()
-                            .authenticated();
+                            .permitAll();
+                            //.authenticated();
                 } )
                 .addFilterBefore( jwtFilter, UsernamePasswordAuthenticationFilter.class );
 
