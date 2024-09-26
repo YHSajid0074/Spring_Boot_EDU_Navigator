@@ -31,6 +31,7 @@ public class AuthenticationService implements IAuthenticationService {
         );
 
         HashMap< String, Object > claims = new HashMap<>();
+
         CustomUserDetails user = ( CustomUserDetails ) authentication.getPrincipal();
 
         claims.put( "username", user.getUsername() );
