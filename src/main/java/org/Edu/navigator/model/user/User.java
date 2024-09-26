@@ -23,6 +23,10 @@ import java.util.Set;
 @SQLDelete( sql = "UPDATE _user SET is_active = FALSE WHERE id = ?" )
 @Entity
 @Table( name = "_user" )
+@NamedEntityGraph(
+        name = "User.roles",
+        attributeNodes = @NamedAttributeNode("roles")
+)
 public class User  {
 
     @Id

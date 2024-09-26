@@ -1,5 +1,6 @@
 package org.Edu.navigator.repository.user;
 
+import org.Edu.navigator.dto.response.CustomUserResponseDTO;
 import org.Edu.navigator.model.user.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -27,5 +28,5 @@ public interface UserRepo extends JpaRepository<User, Long > {
                 WHERE
                     user.id = :id
             """ )
-    User findUserByUserId( @Param( "id" ) Long id );
+    CustomUserResponseDTO findUserByUserId(@Param( "id" ) Long id );
 }

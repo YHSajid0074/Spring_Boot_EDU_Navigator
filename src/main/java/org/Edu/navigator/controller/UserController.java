@@ -26,7 +26,7 @@ public class UserController  {
 
 
     @GetMapping( "{id}" )
-    public ResponseEntity<User> readOne(@PathVariable( "id" ) Long id ) {
+    public ResponseEntity<CustomUserResponseDTO> readOne(@PathVariable( "id" ) Long id ) {
         return ResponseEntity
                 .ok()
                 .body( userService.readOne( id ) );

@@ -38,8 +38,8 @@ public class UserService  {
 
     }
 
-    public User readOne(Long id ) {
-       User singleUserById = userRepository.findUserByUserId(id);
+    public CustomUserResponseDTO readOne(Long id ) {
+        CustomUserResponseDTO singleUserById = userRepository.findUserByUserId(id);
         if ( Objects.isNull( singleUserById ) ) {
             throw new RuntimeException( "User with id " + id + " not found." );
         }
@@ -50,7 +50,7 @@ public class UserService  {
 
 
     public User setUserRoles( UserRolesRequestDTO requestDTO ) {
-        User foundUser = userRepository.findUserByUserId( requestDTO.userId() );
+        User foundUser = userRepository.findById( requestDTO.userId() ).get();
 
         if ( Objects.isNull( foundUser ) ) {
             throw new RuntimeException( "User with id " + requestDTO.userId() + " not found." );

@@ -5,12 +5,14 @@ import org.Edu.navigator.Config.security.jwt.JWTFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -22,16 +24,17 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @RequiredArgsConstructor
 public class GlobalWebSecurityConfig {
     private final JWTFilter jwtFilter;
+    private final UserDetailsService customUserDetailsService;  // Injected UserDetailsService
 
     @Bean
-    public SecurityFilterChain securityFilterChain( HttpSecurity http ) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf( AbstractHttpConfigurer::disable )
-                .cors( cors -> cors.configurationSource( new CustomCORSConfig() ) )
-                .sessionManagement( sessionManagement -> sessionManagement.sessionCreationPolicy(
+                .csrf(AbstractHttpConfigurer::disable)
+                .cors(cors -> cors.configurationSource(new CustomCORSConfig()))
+                .sessionManagement(sessionManagement -> sessionManagement.sessionCreationPolicy(
                         SessionCreationPolicy.STATELESS
-                ) )
-                .authorizeHttpRequests( ( httpRequests ) -> {
+                ))
+                .authorizeHttpRequests((httpRequests) -> {
                     httpRequests
                             .requestMatchers(
                                     "/register",
@@ -56,20 +59,28 @@ public class GlobalWebSecurityConfig {
                             )
                             .permitAll()
                             .anyRequest()
-                            .permitAll();
-                            //.authenticated();
-                } )
-                .addFilterBefore( jwtFilter, UsernamePasswordAuthenticationFilter.class );
+                            .permitAll();  // Secure all other endpoints
+                })
+                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
 
     @Bean
-    public AuthenticationManager authenticationManager( AuthenticationConfiguration authenticationConfiguration )
-            throws Exception {
-        return authenticationConfiguration.getAuthenticationManager();
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+        return authenticationConfiguration.getAuthenticationManager();  // Default manager using DAO
     }
 
+    // Configure the DaoAuthenticationProvider bean
+    @Bean
+    public DaoAuthenticationProvider daoAuthenticationProvider() {
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+        authProvider.setUserDetailsService(customUserDetailsService);  // Set the custom UserDetailsService
+        authProvider.setPasswordEncoder(passwordEncoder());  // Set the password encoder
+        return authProvider;
+    }
+
+    // Use BCryptPasswordEncoder for password encoding
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

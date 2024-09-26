@@ -11,9 +11,7 @@ public class SSEService<T> {
     private final Sinks.Many<T> sink = Sinks.many().multicast().onBackpressureBuffer();
 
     public Flux<T> subscribe() {
-
         return sink.asFlux();
-
     }
 
     public void emit(T data) {
