@@ -20,13 +20,13 @@ import java.util.Set;
 @NoArgsConstructor
 //@SuperBuilder
 //@SQLRestriction( "is_active = TRUE" )
-@SQLDelete( sql = "UPDATE _user SET is_active = FALSE WHERE id = ?" )
+//@SQLDelete( sql = "UPDATE _user SET is_active = FALSE WHERE id = ?" )
 @Entity
 @Table( name = "_user" )
-@NamedEntityGraph(
-        name = "User.roles",
-        attributeNodes = @NamedAttributeNode("roles")
-)
+////@NamedEntityGraph(
+//        name = "User.roles",
+//        attributeNodes = @NamedAttributeNode("roles")
+//)
 public class User  {
 
     @Id

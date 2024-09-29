@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthenticationController implements IAuthenticationController {
     private final IAuthenticationService authenticationService;
 
-    @PostMapping( "Log-In" )
+    @PostMapping(  )
     @Override
-    public ResponseEntity<LoginResponseDTO> login(@Validated @RequestBody LoginRequestDTO requestDTO ) {
+    public ResponseEntity<LoginResponseDTO> login( @RequestBody LoginRequestDTO requestDTO ) {
         return ResponseEntity.ok( authenticationService.login( requestDTO ) );
     }
 }

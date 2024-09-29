@@ -5,9 +5,6 @@ import jakarta.validation.constraints.NotEmpty;
 
 import java.io.Serializable;
 
-/**
- * DTO for {@link com.mendax47.learn.module.user.User}
- */
 
 public record LoginRequestDTO(
         @NotEmpty( message = "Username is mandatory." )

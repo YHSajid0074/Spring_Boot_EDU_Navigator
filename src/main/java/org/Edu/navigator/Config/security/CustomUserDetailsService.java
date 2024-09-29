@@ -1,6 +1,7 @@
 package org.Edu.navigator.Config.security;
 
 import lombok.RequiredArgsConstructor;
+import org.Edu.navigator.auth.CustomUserDetails;
 import org.Edu.navigator.model.role.Role;
 import org.Edu.navigator.model.user.User;
 import org.Edu.navigator.repository.user.UserRepo;
@@ -31,6 +32,13 @@ public class CustomUserDetailsService implements UserDetailsService {
                 .map( Role::getRoleType )
                 .collect( Collectors.toSet() );
 
-        return new UserPrinciple(foundUser);
+        return CustomUserDetails
+                .builder()
+                .id( foundUser.getId() )
+                .username( foundUser.getUsername() )
+                .password( foundUser.getPassword() )
+                .email( foundUser.getEmail() )
+                .roles( grantedAuthorities )
+                .build();
     }
 }

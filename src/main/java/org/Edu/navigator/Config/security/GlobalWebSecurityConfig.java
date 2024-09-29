@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -52,6 +53,7 @@ public class GlobalWebSecurityConfig {
                                     "/webjars/**",
                                     "/User",
                                     "/User/",
+                                    "Log",
                                     "/User/change-roles",
                                     "/Role",
                                     "/Role/",
@@ -59,7 +61,7 @@ public class GlobalWebSecurityConfig {
                             )
                             .permitAll()
                             .anyRequest()
-                            .permitAll();  // Secure all other endpoints
+                            .authenticated();  // Secure all other endpoints
                 })
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
@@ -71,7 +73,7 @@ public class GlobalWebSecurityConfig {
         return authenticationConfiguration.getAuthenticationManager();  // Default manager using DAO
     }
 
-    // Configure the DaoAuthenticationProvider bean
+
     @Bean
     public DaoAuthenticationProvider daoAuthenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
@@ -80,9 +82,13 @@ public class GlobalWebSecurityConfig {
         return authProvider;
     }
 
-    // Use BCryptPasswordEncoder for password encoding
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
+   // @Bean
+   // public void configure(AuthenticationManagerBuilder auth) throws Exception {
+     //   auth.userDetailsService(customUserDetailsService).passwordEncoder(passwordEncoder());
+  //  }
 }
