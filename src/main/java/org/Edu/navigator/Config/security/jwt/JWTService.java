@@ -25,6 +25,7 @@ public class JWTService {
     private String secretKey;
 
     @Value( "${application.security.jwt.expiration}" )
+
     private Long jwtExpiration;
 
     public < T > T extractClaim( String token, Function<Claims, T > claimsResolver ) {
