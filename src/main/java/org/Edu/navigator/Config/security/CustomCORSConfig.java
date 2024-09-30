@@ -16,7 +16,7 @@ public class CustomCORSConfig implements CorsConfigurationSource {
         corsConfig.setAllowedMethods( Collections.singletonList( "*" ) );
         corsConfig.setAllowCredentials( true );
         corsConfig.setAllowedHeaders( Collections.singletonList( "*" ) );
-        corsConfig.setExposedHeaders( Collections.singletonList( "Authorization" ) );
+       // corsConfig.setExposedHeaders( Collections.singletonList( "Authorization" ) );
         corsConfig.setMaxAge( 3600L );
 
         return corsConfig;
